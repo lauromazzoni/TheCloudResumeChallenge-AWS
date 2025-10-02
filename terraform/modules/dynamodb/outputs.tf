@@ -1,9 +1,9 @@
 output "table_name" {
-  description = "Name of the DynamoDB table"
-  value       = aws_dynamodb_table.visitor_counter.name
+  description = "Nome da tabela criada"
+  value       = aws_dynamodb_table.this.name
 }
 
 output "table_arn" {
-  description = "ARN of the DynamoDB table"
-  value       = aws_dynamodb_table.visitor_counter.arn
+  description = "ARN da tabela DynamoDB"
+  value       = aws_dynamodb_table.this.arn
 }

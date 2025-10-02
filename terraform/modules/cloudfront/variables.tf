@@ -1,37 +1,4 @@
-variable "project_name" {
-  description = "Name of the project"
+variable "s3_bucket_website_endpoint" {
+  description = "Endpoint de website do bucket S3 (ex: bucket.s3-website-us-east-1.amazonaws.com)"
   type        = string
-}
-
-variable "environment" {
-  description = "Environment name"
-  type        = string
-}
-
-variable "s3_bucket_id" {
-  description = "ID of the S3 bucket"
-  type        = string
-}
-
-variable "s3_bucket_regional_domain_name" {
-  description = "Regional domain name of the S3 bucket"
-  type        = string
-}
-
-variable "domain_name" {
-  description = "Domain name for the website"
-  type        = string
-  default     = ""
-}
-
-variable "certificate_arn" {
-  description = "ARN of the SSL certificate"
-  type        = string
-  default     = ""
-}
-
-variable "tags" {
-  description = "Tags to apply to resources"
-  type        = map(string)
-  default     = {}
 }
