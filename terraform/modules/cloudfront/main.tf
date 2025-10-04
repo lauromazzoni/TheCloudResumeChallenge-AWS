@@ -2,6 +2,11 @@ resource "aws_cloudfront_distribution" "this" {
   enabled             = true
   default_root_object = "index.html"
 
+  aliases = [
+    var.domain_name,
+    "www.${var.domain_name}"
+  ]
+
   origin {
     domain_name = var.s3_bucket_website_endpoint
     origin_id   = "s3-website-origin"
@@ -38,7 +43,9 @@ resource "aws_cloudfront_distribution" "this" {
   }
 
   viewer_certificate {
-    cloudfront_default_certificate = true
+    acm_certificate_arn      = var.acm_certificate_arn
+    ssl_support_method       = "sni-only"
+    minimum_protocol_version = "TLSv1.2_2021"
   }
 
   price_class = "PriceClass_100"
