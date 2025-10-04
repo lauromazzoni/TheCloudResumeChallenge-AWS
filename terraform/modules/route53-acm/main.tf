@@ -13,6 +13,7 @@ resource "aws_acm_certificate" "this" {
   provider          = aws.us_east_1
   domain_name       = var.domain_name          # raiz: vouaqui.com.br
   validation_method = "DNS"
+  tags = { Project = "ResumeSite" }  # a tag é utilizada uma uma IAM policy
 
   subject_alternative_names = [
     "www.${var.domain_name}"
