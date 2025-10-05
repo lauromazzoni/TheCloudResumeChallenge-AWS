@@ -38,7 +38,15 @@ module "s3_website" {
   bucket_name = var.s3_bucket_name
 }
 
-# CloudFront
+# Cria Hosted Zone + ACM
+module "route53_acm" {
+  source      = "./modules/route53-acm"
+  domain_name = var.domain_name
+}
+
+
+
+# CloudFront usa o certificado gerado
 module "cloudfront" {
   source                     = "./modules/cloudfront"
   s3_bucket_website_endpoint = module.s3_website.website_endpoint
@@ -46,9 +54,10 @@ module "cloudfront" {
   domain_name                = var.domain_name
 }
 
-# Route53 + ACM
-module "route53_acm" {
-  source                    = "./modules/route53-acm"
+# Após CloudFront e ACM existirem, cria os registros DNS
+module "route53_records" {
+  source                    = "./modules/route53_records"
+  zone_id                   = module.route53_acm.zone_id
   domain_name               = var.domain_name
   cloudfront_domain_name    = module.cloudfront.cloudfront_domain_name
   cloudfront_hosted_zone_id = var.cloudfront_hosted_zone_id

@@ -1,9 +1,9 @@
-output "bucket_name" {
-  description = "Nome do bucket S3"
-  value       = aws_s3_bucket.this.bucket
+output "certificate_arn" {
+  description = "ARN do certificado ACM validado"
+  value       = aws_acm_certificate_validation.this.certificate_arn
 }
 
-output "website_endpoint" {
-  description = "Endpoint público do S3 (modo estático)"
-  value       = aws_s3_bucket_website_configuration.this.website_endpoint
+output "zone_id" {
+  description = "ID da Hosted Zone criada"
+  value       = aws_route53_zone.this.zone_id
 }

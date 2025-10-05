@@ -19,8 +19,8 @@ output "s3_bucket_name" {
 }
 
 output "s3_website_endpoint" {
-  description = "Endpoint público do S3 Website"
-  value       = module.s3_website.weboutputsdpoint
+  value       = module.s3_website.website_endpoint
+  description = "Endpoint do website S3"
 }
 
 output "cloudfront_distribution_id" {
