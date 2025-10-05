@@ -44,8 +44,13 @@
         - name: Terraform Plan
           run: terraform -chdir=terraform plan -out=tfplan
 
-        - name: Terraform Apply
-          run: terraform -chdir=terraform apply -auto-approve tfplan
+
+        # 6. Executa o Destroy completo
+        - name: Terraform Destroy
+          run: terraform -chdir=terraform destroy -auto-approve          
+
+        # - name: Terraform Apply
+        #   run: terraform -chdir=terraform apply -auto-approve tfplan
 
         - name: Wait for API to be ready
           run: sleep 30
