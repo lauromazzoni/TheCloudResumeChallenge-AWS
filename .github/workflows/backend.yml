@@ -58,7 +58,12 @@ jobs:
       - name: Terraform Plan
         run: terraform -chdir=terraform plan -out=tfplan
 
-      # 10. Aplica (somente se testes passarem)
-      - name: Terraform Apply
-        if: success()
-        run: terraform -chdir=terraform apply -auto-approve tfplan
+      - name: Terraform Destroy
+        if: github.event_name == 'workflow_dispatch'
+        run: terraform -chdir=terraform destroy -auto-approve
+
+
+      # # 10. Aplica (somente se testes passarem)
+      # - name: Terraform Apply
+      #   if: success()
+      #   run: terraform -chdir=terraform apply -auto-approve tfplan
