@@ -1,5 +1,11 @@
 provider "aws" {
   region = var.aws_region
+  default_tags {
+    tags = {
+      Project = "CloudResumeChallenge"
+      Owner   = "Lauro Mazzoni"
+    }
+  }
 }
 
 # DynamoDB

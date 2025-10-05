@@ -26,3 +26,9 @@ resource "aws_iam_role_policy_attachment" "lambda_dynamodb" {
   role       = aws_iam_role.lambda_exec.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess"
 }
+
+resource "aws_iam_role_policy_attachment" "dynamodb_access" {
+  role       = aws_iam_role.this.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess"
+}
+
