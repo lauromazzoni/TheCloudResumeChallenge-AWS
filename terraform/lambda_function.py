@@ -17,7 +17,7 @@ def lambda_handler(event, context):
         "statusCode": 200,
         "headers": {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*"  # habilita CORS
+            "Access-Control-Allow-Origin": "*"  # importante: habilita CORS
         },
         "body": json.dumps({
             "visits": int(response['Attributes']['count'])

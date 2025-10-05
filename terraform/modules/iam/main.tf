@@ -14,6 +14,7 @@ resource "aws_iam_role" "this" {
   })
 }
 
+
 resource "aws_iam_role" "lambda_exec" {
   name = var.role_name
 
