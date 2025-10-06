@@ -70,10 +70,22 @@ jobs:
       #   if: ${{ github.event.inputs.action == 'apply' || github.event_name != 'workflow_dispatch' }}
       #   run: pytest -v tests/
 
+      # - name: Wait for S3 bucket availability
+      #   run: |
+      #     for i in {1..10}; do
+      #       if aws s3api head-bucket --bucket "${{ env.S3_BUCKET_NAME }}" 2>/dev/null; then
+      #         echo "Bucket found!"
+      #         break
+      #       fi
+      #       echo "Waiting for bucket to be ready..."
+      #       sleep 15
+      #     done
+
+
       - name: Upload static files to S3
         if: ${{ github.event.inputs.action == 'apply' && success() }}
         run: |
-          aws s3 sync . s3://${{ secrets.S3_BUCKET_NAME }} \
+          aws s3 sync . s3://aws---cloud-resume-challenge-2025-bucket-s3 \
             --exclude "*" \
             --include "*.html" \
             --include "*.css" \
