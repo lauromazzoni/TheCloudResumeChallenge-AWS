@@ -1,6 +1,8 @@
 import requests
 
-API_URL = "https://b1g432dvy6.execute-api.us-east-1.amazonaws.com/prod/counter"
+#API_URL = "https://b1g432dvy6.execute-api.us-east-1.amazonaws.com/prod/counter"
+API_URL = "https://abc123.execute-api.us-east-1.amazonaws.com/prod/counter"
+
 
 def test_counter_returns_status_200():
     r = requests.get(API_URL)
