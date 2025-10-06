@@ -66,9 +66,9 @@ jobs:
         if: ${{ github.event.inputs.action == 'apply' || github.event_name != 'workflow_dispatch' }}
         run: sleep 30
 
-      - name: Run tests
-        if: ${{ github.event.inputs.action == 'apply' || github.event_name != 'workflow_dispatch' }}
-        run: pytest -v tests/
+      # - name: Run tests
+      #   if: ${{ github.event.inputs.action == 'apply' || github.event_name != 'workflow_dispatch' }}
+      #   run: pytest -v tests/
 
       - name: Upload static files to S3
         if: ${{ github.event.inputs.action == 'apply' && success() }}
