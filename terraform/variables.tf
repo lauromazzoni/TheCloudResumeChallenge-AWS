@@ -43,13 +43,13 @@ variable "api_gateway_stage" {
 variable "s3_bucket_name" {
   description = "Nome do bucket S3 do frontend (precisa ser globalmente único)"
   type        = string
-  default     = "meu-curriculo-site"
+  default     = "aws---cloud-resume-challenge-2025-bucket-s3"
 }
 
 variable "domain_name" {
   description = "Domínio raiz usado para o site (ex: vouaqui.com.br)"
   type        = string
-  default     = "vouaqui.com.br"
+  default     = "awscloudhandson.com"
 }
 
 variable "cloudfront_hosted_zone_id" {
