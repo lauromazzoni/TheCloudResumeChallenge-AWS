@@ -1,3 +1,6 @@
+# Obter a região atual (para montar o ARN de integração corretamente)
+data "aws_region" "current" {}
+
 # Criação da API REST
 resource "aws_api_gateway_rest_api" "this" {
   name = var.api_name
@@ -25,7 +28,9 @@ resource "aws_api_gateway_integration" "lambda_integration" {
   http_method             = aws_api_gateway_method.get_counter.http_method
   integration_http_method = "POST"
   type                    = "AWS_PROXY"
-  uri                     = "${var.lambda_invoke_arn}:invocations"
+
+  # Formato correto exigido pelo API Gateway
+  uri = "arn:aws:apigateway:${data.aws_region.current.name}:lambda:path/2015-03-31/functions/${var.lambda_invoke_arn}/invocations"
 }
 
 # Permissão para API Gateway invocar a Lambda
