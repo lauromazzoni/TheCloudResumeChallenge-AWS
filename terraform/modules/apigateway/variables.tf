@@ -6,6 +6,7 @@ variable "api_name" {
 variable "lambda_invoke_arn" {
   description = "Invoke ARN da Lambda"
   type        = string
+  default     = "${module.lambda.function_arn}:invocations"
 }
 
 variable "lambda_name" {
