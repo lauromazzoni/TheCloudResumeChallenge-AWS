@@ -13,6 +13,7 @@ def test_counter_returns_json():
     data = r.json()
     # a resposta tem "body" porque é proxy integration
     assert "body" in data
+    
 
 def test_counter_has_visits_key():
     r = requests.get(API_URL)
