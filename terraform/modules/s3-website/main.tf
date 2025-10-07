@@ -53,10 +53,15 @@ resource "aws_s3_bucket_ownership_controls" "ownership" {
 
 # Esvazia o bucket antes de destruí-lo
 resource "null_resource" "empty_bucket" {
+  triggers = {
+    bucket_name = aws_s3_bucket.this.bucket
+  }
+
   provisioner "local-exec" {
     when    = destroy
-    command = "aws s3 rm s3://${aws_s3_bucket.this.bucket} --recursive"
+    command = "aws s3 rm s3://${self.triggers.bucket_name} --recursive"
   }
 
   depends_on = [aws_s3_bucket.this]
 }
+
