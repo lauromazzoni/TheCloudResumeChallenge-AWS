@@ -54,6 +54,18 @@ jobs:
         if: ${{ github.event.inputs.action == 'apply' || github.event_name != 'workflow_dispatch' }}
         run: terraform -chdir=terraform apply -auto-approve tfplan
 
+      - name: Inject API URL into script.js
+        run: |
+          API_URL=$(terraform -chdir=terraform output -raw api_gateway_url | tr -d '\n\r')
+          echo "Substituindo API URL em script.js para: $API_URL"
+          awk -v newurl="$API_URL/counter" '{ 
+            if ($0 ~ /const apiUrl =/) 
+              print "const apiUrl = \"" newurl "\";" 
+            else 
+              print $0 
+          }' script.js > temp.js && mv temp.js script.js
+
+
       - name: Terraform Destroy
         if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.action == 'destroy' }}
         run: |
@@ -65,7 +77,7 @@ jobs:
         run: sleep 30
 
       - name: Upload static files to S3
-        if: ${{ github.event.inputs.action == 'apply' && success() }}
+        if: ${{ (github.event.inputs.action == 'apply' || github.event_name != 'workflow_dispatch') && success() }}
         run: |
           aws s3 sync . s3://aws---cloud-resume-challenge-2025-bucket-s3 \
             --exclude "*" \
