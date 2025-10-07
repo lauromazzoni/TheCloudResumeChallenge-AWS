@@ -1,9 +1,18 @@
+# Armazenando o tfstate em um bucket s3
+terraform {
+  backend "s3" {
+    bucket = "awscloudhandson-terraform-state"
+    key    = "resume-challenge/terraform.tfstate"
+    region = "us-east-1"
+    encrypt = true
+  }
+}
+
 provider "aws" {
   region = var.aws_region
   default_tags {
     tags = {
       Project = "CloudResumeChallenge"
-      Owner   = "Lauro Mazzoni"
     }
   }
 }
