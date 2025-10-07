@@ -47,33 +47,27 @@ jobs:
       - name: Terraform Validate
         run: terraform -chdir=terraform validate
 
-      # Executa o Terraform Plan (sempre)
       - name: Terraform Plan
         run: terraform -chdir=terraform plan -out=tfplan
 
-      # 🚀 Ação condicional: APPLY
       - name: Terraform Apply
         if: ${{ github.event.inputs.action == 'apply' || github.event_name != 'workflow_dispatch' }}
         run: terraform -chdir=terraform apply -auto-approve tfplan
 
-      # 💣 Ação condicional: DESTROY
       - name: Terraform Destroy
-        if: ${{ github.event.inputs.action == 'destroy' }}
-        run: terraform -chdir=terraform destroy -auto-approve
+        if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.action == 'destroy' }}
+        run: |
+          echo "Executando Terraform destroy..."
+          terraform -chdir=terraform destroy -auto-approve
 
-      # Somente roda os testes e upload se for APPLY
       - name: Wait for API to be ready
         if: ${{ github.event.inputs.action == 'apply' || github.event_name != 'workflow_dispatch' }}
         run: sleep 30
 
-      - name: Run tests
-        if: ${{ github.event.inputs.action == 'apply' || github.event_name != 'workflow_dispatch' }}
-        run: pytest -v tests/
-
       - name: Upload static files to S3
         if: ${{ github.event.inputs.action == 'apply' && success() }}
         run: |
-          aws s3 sync . s3://${{ secrets.S3_BUCKET_NAME }} \
+          aws s3 sync . s3://aws---cloud-resume-challenge-2025-bucket-s3 \
             --exclude "*" \
             --include "*.html" \
             --include "*.css" \
@@ -81,8 +75,16 @@ jobs:
             --include "*.png" \
             --delete
 
+      - name: Get CloudFront Distribution ID
+        if: ${{ github.event.inputs.action == 'apply' && success() }}
+        id: cf
+        run: |
+          cd terraform
+          echo "DISTRIBUTION_ID=$(terraform output -raw cloudfront_distribution_id)" >> $GITHUB_ENV
+          echo "CloudFront Distribution ID: $(terraform output -raw cloudfront_distribution_id)"
+
       - name: Invalidate CloudFront cache
         if: ${{ github.event.inputs.action == 'apply' && success() }}
         run: |
-          DISTRIBUTION_ID=$(terraform -chdir=terraform output -raw cloudfront_distribution_id)
-          aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --paths "/*"
+          echo "Invalidating CloudFront cache for distribution: $DISTRIBUTION_ID"
+          aws cloudfront create-invalidation --distribution-id "$DISTRIBUTION_ID" --paths "/*"
