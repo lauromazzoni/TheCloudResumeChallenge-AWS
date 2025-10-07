@@ -60,8 +60,9 @@ resource "aws_api_gateway_method_response" "get_response" {
   }
 }
 
-# INTEGRATION RESPONSE (GET)
 resource "aws_api_gateway_integration_response" "get_integration_response" {
+  depends_on = [aws_api_gateway_integration.lambda_integration]
+
   rest_api_id = aws_api_gateway_rest_api.this.id
   resource_id = aws_api_gateway_resource.counter.id
   http_method = aws_api_gateway_method.get_counter.http_method
@@ -73,6 +74,7 @@ resource "aws_api_gateway_integration_response" "get_integration_response" {
     "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
   }
 }
+
 
 # Método OPTIONS (CORS)
 resource "aws_api_gateway_method" "options" {
