@@ -43,3 +43,20 @@ resource "aws_s3_bucket_public_access_block" "this" {
   ignore_public_acls      = false
   restrict_public_buckets = false
 }
+
+resource "aws_s3_bucket_ownership_controls" "ownership" {
+  bucket = aws_s3_bucket.this.id
+  rule {
+    object_ownership = "BucketOwnerPreferred"
+  }
+}
+
+# Esvazia o bucket antes de destruí-lo
+resource "null_resource" "empty_bucket" {
+  provisioner "local-exec" {
+    when    = destroy
+    command = "aws s3 rm s3://${aws_s3_bucket.this.bucket} --recursive"
+  }
+
+  depends_on = [aws_s3_bucket.this]
+}
