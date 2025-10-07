@@ -1,4 +1,4 @@
-# Obter a região atual (para montar o ARN de integração corretamente)
+# Obter a região atual (necessário para montar o ARN corretamente)
 data "aws_region" "current" {}
 
 # Criação da API REST
@@ -21,16 +21,16 @@ resource "aws_api_gateway_method" "get_counter" {
   authorization = "NONE"
 }
 
-# Integração com Lambda
+# Integração com Lambda (modo não-proxy)
 resource "aws_api_gateway_integration" "lambda_integration" {
   rest_api_id             = aws_api_gateway_rest_api.this.id
   resource_id             = aws_api_gateway_resource.counter.id
   http_method             = aws_api_gateway_method.get_counter.http_method
   integration_http_method = "POST"
-  type                    = "AWS_PROXY"
+  type                    = "AWS"
 
-  # Formato correto exigido pelo API Gateway
-  uri = "arn:aws:apigateway:${data.aws_region.current.name}:lambda:path/2015-03-31/functions/${var.lambda_invoke_arn}/invocations"
+  # Formato correto do ARN exigido pelo API Gateway
+  uri = "arn:aws:apigateway:${data.aws_region.current.id}:lambda:path/2015-03-31/functions/${var.lambda_invoke_arn}/invocations"
 }
 
 # Permissão para API Gateway invocar a Lambda
@@ -40,6 +40,38 @@ resource "aws_lambda_permission" "apigw" {
   function_name = var.lambda_name
   principal     = "apigateway.amazonaws.com"
   source_arn    = "${aws_api_gateway_rest_api.this.execution_arn}/*/*"
+}
+
+# METHOD RESPONSE (GET)
+resource "aws_api_gateway_method_response" "get_response" {
+  rest_api_id = aws_api_gateway_rest_api.this.id
+  resource_id = aws_api_gateway_resource.counter.id
+  http_method = aws_api_gateway_method.get_counter.http_method
+  status_code = "200"
+
+  response_models = {
+    "application/json" = "Empty"
+  }
+
+  response_parameters = {
+    "method.response.header.Access-Control-Allow-Origin"  = true
+    "method.response.header.Access-Control-Allow-Methods" = true
+    "method.response.header.Access-Control-Allow-Headers" = true
+  }
+}
+
+# INTEGRATION RESPONSE (GET)
+resource "aws_api_gateway_integration_response" "get_integration_response" {
+  rest_api_id = aws_api_gateway_rest_api.this.id
+  resource_id = aws_api_gateway_resource.counter.id
+  http_method = aws_api_gateway_method.get_counter.http_method
+  status_code = aws_api_gateway_method_response.get_response.status_code
+
+  response_parameters = {
+    "method.response.header.Access-Control-Allow-Origin"  = "'*'"
+    "method.response.header.Access-Control-Allow-Methods" = "'GET,OPTIONS'"
+    "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+  }
 }
 
 # Método OPTIONS (CORS)
