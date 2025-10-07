@@ -54,6 +54,11 @@ jobs:
         if: ${{ github.event.inputs.action == 'apply' || github.event_name != 'workflow_dispatch' }}
         run: terraform -chdir=terraform apply -auto-approve tfplan
 
+      - name: Inject API URL into script.js
+        run: |
+          API_URL=$(terraform -chdir=terraform output -raw api_gateway_url)
+          sed -i "s|const apiUrl = .*|const apiUrl = \"${API_URL}/counter\";|" script.js      
+
       - name: Terraform Destroy
         if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.action == 'destroy' }}
         run: |
