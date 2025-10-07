@@ -4,7 +4,7 @@ const API_URL = "https://b1g432dvy6.execute-api.us-east-1.amazonaws.com/prod/cou
 
 async function updateCounter() {
   try {
-    let response = await fetch(apiUrl);
+    let response = await fetch(API_URL);
     let data = await response.json();
 
     // o campo "visits" vem dentro de "body" como string JSON
