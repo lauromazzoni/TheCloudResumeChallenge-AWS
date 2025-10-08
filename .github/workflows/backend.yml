@@ -55,16 +55,11 @@ jobs:
         run: terraform -chdir=terraform apply -auto-approve tfplan
 
       - name: Inject API URL into script.js
+        if: ${{ github.event.inputs.action == 'apply' }}
         run: |
           API_URL=$(terraform -chdir=terraform output -raw api_gateway_url | tr -d '\n\r')
-          echo "Substituindo API URL em script.js para: $API_URL"
-          awk -v newurl="$API_URL/counter" '{ 
-            if ($0 ~ /const apiUrl =/) 
-              print "const apiUrl = \"" newurl "\";" 
-            else 
-              print $0 
-          }' script.js > temp.js && mv temp.js script.js
-
+          echo "Atualizando API_URL em script.js para: $API_URL/counter"
+          sed -i "s|^const API_URL = .*|const API_URL = \"$API_URL/counter\";|" script.js
 
       - name: Terraform Destroy
         if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.action == 'destroy' }}
