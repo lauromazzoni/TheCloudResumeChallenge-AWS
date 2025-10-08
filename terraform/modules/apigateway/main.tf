@@ -125,14 +125,16 @@ resource "aws_api_gateway_integration_response" "options_integration_response" {
   }
 }
 
-# Deploy da API
+# Deploy da API — agora com dependências completas
 resource "aws_api_gateway_deployment" "deploy" {
+  rest_api_id = aws_api_gateway_rest_api.this.id
+
   depends_on = [
     aws_api_gateway_integration.lambda_integration,
-    aws_api_gateway_integration.options_mock
+    aws_api_gateway_integration.options_mock,
+    aws_api_gateway_method_response.get_response,
+    aws_api_gateway_integration_response.get_integration_response
   ]
-
-  rest_api_id = aws_api_gateway_rest_api.this.id
 }
 
 # Stage separado
