@@ -42,3 +42,8 @@ output "route53_zone_id" {
   description = "ID da hosted zone Route53"
   value       = module.route53_acm.zone_id
 }
+
+output "api_custom_domain" {
+  description = "Domínio fixo da API Gateway"
+  value       = module.apigateway_domain.custom_domain_name
+}
