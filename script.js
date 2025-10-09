@@ -1,5 +1,5 @@
 const counter = document.getElementById("visits");
-const API_URL = "https://jaotlt9koe.execute-api.us-east-1.amazonaws.com/prod/counter";
+const API_URL = "https://api.awscloudhandson.com/counter";
 
 async function updateCounter() {
   try {

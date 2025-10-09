@@ -77,3 +77,15 @@ module "route53_records" {
   cloudfront_domain_name    = module.cloudfront.cloudfront_domain_name
   cloudfront_hosted_zone_id = var.cloudfront_hosted_zone_id
 }
+
+module "apigateway_domain" {
+  source     = "./modules/apigateway_domain"
+  domain_name = var.domain_name
+  zone_id     = module.route53_acm.zone_id
+  api_id      = module.apigateway.api_id
+  stage_name  = module.apigateway.stage_name
+}
+
+output "api_custom_domain" {
+  value = module.apigateway_domain.custom_domain_name
+}
