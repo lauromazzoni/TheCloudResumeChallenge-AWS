@@ -57,9 +57,18 @@ jobs:
       - name: Inject API URL into script.js
         if: ${{ github.event.inputs.action == 'apply' }}
         run: |
-          API_URL=$(terraform -chdir=terraform output -raw api_gateway_url | tr -d '\n\r')
+          echo "Obtendo URL do API Gateway..."
+          API_URL=$(terraform -chdir=terraform output -raw api_gateway_url 2>/dev/null | grep -Eo 'https://[a-zA-Z0-9.-]+\.execute-api\.[a-z0-9-]+\.amazonaws\.com/[a-zA-Z0-9_-]+' | head -n1)
+          echo "API_URL limpa: $API_URL"
+
+          if [ -z "$API_URL" ]; then
+            echo "ERRO: API_URL não foi obtida corretamente."
+            exit 1
+          fi
+
           echo "Atualizando API_URL em script.js para: $API_URL/counter"
           sed -i "s|^const API_URL = .*|const API_URL = \"$API_URL/counter\";|" script.js
+
 
       - name: Terraform Destroy
         if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.action == 'destroy' }}
