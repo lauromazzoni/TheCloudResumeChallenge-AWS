@@ -8,7 +8,7 @@ async function updateCounter() {
 
     // Aceita tanto body JSON quanto resposta direta
     const parsed = typeof data.body === "string" ? JSON.parse(data.body) : data;
-    counter.innerText = parsed.visits ?? "N/A";
+    counter.innerText = parsed.count ?? "N/A";
   } catch (err) {
     console.error("Erro ao buscar contador:", err);
     counter.innerText = "N/A";
