@@ -9,45 +9,20 @@ table = dynamodb.Table(table_name)
 def lambda_handler(event, context):
     response = table.update_item(
         Key={"id": "visits"},
-        UpdateExpression="ADD count :inc",
+        UpdateExpression="ADD #count :inc",
+        ExpressionAttributeNames={"#count": "count"},
         ExpressionAttributeValues={":inc": 1},
         ReturnValues="UPDATED_NEW"
     )
 
-    visits = int(response["Attributes"]["count"])
-    return {"visits": visits}
-
-
-
-
-
-
-
-
-
-# import boto3
-# import json
-
-# dynamodb = boto3.resource('dynamodb')
-# table = dynamodb.Table('resume-counter')
-
-# def lambda_handler(event, context):
-#     response = table.update_item(
-#         Key={'id': 'visits'},
-#         UpdateExpression="ADD #count :incr",
-#         ExpressionAttributeNames={"#count": "count"},
-#         ExpressionAttributeValues={":incr": 1},
-#         ReturnValues="UPDATED_NEW"
-#     )
-
-#     return {
-#         "statusCode": 200,
-#         "headers": {
-#             "Content-Type": "application/json",
-#             "Access-Control-Allow-Origin": "*"  # habilita CORS
-#         },
-#         "body": json.dumps({
-#             "visits": int(response['Attributes']['count'])
-#         })
-#     }
-
+    count = int(response["Attributes"]["count"])
+    return {
+        "statusCode": 200,
+        "headers": {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "GET,OPTIONS",
+            "Access-Control-Allow-Headers": "Content-Type"
+        },
+        "body": json.dumps({"count": count})
+    }
