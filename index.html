@@ -1,246 +1,170 @@
-<!doctype html>
-<html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Doces Artesanais • Travessa do Amor e Bombonzão de Morango</title>
-  <meta name="description" content="Pronta entrega limitada de Travessa do Amor e Bombonzão de Morango. Morango, Brigadeiro de Ninho e ganache de chocolate com granulado. 250g por apenas 10 reais. Encomendas para o fim de semana." />
-  <meta name="theme-color" content="#b4231a" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23b4231a'/%3E%3Cstop offset='1' stop-color='%23ff6b6b'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='50' r='46' fill='url(%23g)'/%3E%3Cpath d='M25 40c0-9 7-16 16-16 6 0 11 3 14 7 3-4 8-7 14-7 9 0 16 7 16 16 0 21-30 33-30 33S25 61 25 40z' fill='%23fff'/%3E%3C/svg%3E" />
-  <style>
-    :root{
-      --bg:#0e0a0a; --ink:#f9fafb; --muted:#e5e7eb; --soft:#1a1414; --brand:#b4231a; --brand2:#ff6b6b; --choc:#3b2f2f; --radius:18px; --shadow:0 18px 60px rgba(0,0,0,.5);
-    }
-    *,*:before,*:after{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0; font:16px/1.6 Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; color:var(--ink); background:radial-gradient(60% 100% at 0% 0%, rgba(255,107,107,.08), transparent 60%), radial-gradient(60% 100% at 100% 0%, rgba(180,35,26,.08), transparent 60%), #0e0a0a}
-    a{color:inherit; text-decoration:none}
-    img{max-width:100%; display:block}
-    .container{max-width:1120px; margin:0 auto; padding:0 20px}
-    header{position:sticky; top:0; z-index:40; background:rgba(14,10,10,.7); backdrop-filter:blur(10px); border-bottom:1px solid rgba(255,255,255,.08)}
-    .nav{display:flex; align-items:center; justify-content:space-between; height:64px}
-    .brand{display:flex; gap:10px; align-items:center; font-weight:900}
-    .dot{width:12px; height:12px; border-radius:999px; background:linear-gradient(90deg,var(--brand),var(--brand2)); box-shadow:0 0 0 4px rgba(255,107,107,.2)}
-    .menu{display:flex; gap:16px}
-    .menu a{padding:8px 12px; border-radius:12px}
-    .menu a:hover{background:rgba(255,255,255,.06)}
-    .btn{display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:14px 20px; border-radius:999px; font-weight:700; border:0; cursor:pointer; box-shadow:var(--shadow)}
-    .btn.primary{background:linear-gradient(90deg,var(--brand),var(--brand2)); color:white}
-    .btn.ghost{background:transparent; color:var(--ink); border:1px solid rgba(255,255,255,.15)}
-    .hero{padding:48px 0 32px}
-    .grid{display:grid; grid-template-columns:1.1fr .9fr; gap:28px; align-items:center}
-    @media (max-width:920px){ .grid{grid-template-columns:1fr} }
-    .card{background:var(--soft); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow)}
-    h1{font-size: clamp(28px, 4.4vw, 56px); line-height:1.05; margin:10px 0}
-    .lead{color:var(--muted)}
-    .badge{display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; background:rgba(255,107,107,.12); color:#ffc9c9; font-weight:700; font-size:12px}
-    .hero-media{position:relative; border-radius:22px; overflow:hidden; border:1px solid rgba(255,255,255,.1); box-shadow:var(--shadow)}
-    .hero-media img{width:100%; height:auto}
-    section{padding:60px 0}
-    .title{font-size: clamp(22px, 3.2vw, 38px); margin:0 0 6px}
-    .sub{color:var(--muted); margin:0 0 18px}
-    .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
-    @media(max-width:920px){ .grid-3{grid-template-columns:1fr} }
-    .price{font-size:42px; font-weight:900}
-    .big{font-size:18px}
-    .gallery{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
-    @media(max-width:920px){ .gallery{grid-template-columns:1fr 1fr} }
-    .gallery img{border-radius:16px; border:1px solid rgba(255,255,255,.08)}
-    .stripe{background:linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px), linear-gradient(180deg, rgba(255,255,255,.06) 1px, transparent 1px); background-size: 22px 22px, 22px 22px}
-    .tag{display:inline-block; padding:6px 10px; border-radius:10px; background:#221616; color:#ffb3b3; font-weight:700; font-size:12px; border:1px solid rgba(255,255,255,.08)}
-    .faq details{background:#1a1515; border:1px solid rgba(255,255,255,.1); padding:14px 16px; border-radius:14px}
-    .faq summary{cursor:pointer; font-weight:700}
-    .foot{padding:28px 0; border-top:1px solid rgba(255,255,255,.1); color:#ddd}
-    .promo{background: radial-gradient(60% 120% at 0% 0%, rgba(255,107,107,.1), transparent 60%), radial-gradient(60% 120% at 100% 30%, rgba(59,47,47,.35), transparent 60%)}
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <title>Currículo - Lauro Mazzoni</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>
-    <div class="container nav">
-      <div class="brand"><span class="dot" aria-hidden="true"></span><span>Doces Artesanais</span></div>
-      <nav class="menu" aria-label="principal">
-        <a href="#travessa">Travessa do Amor</a>
-        <a href="#bombonzão">Bombonzão</a>
-        <a href="#galeria">Galeria</a>
-        <a href="#encomendas">Encomendas</a>
-        <a href="#contato" class="btn primary">Pedir no WhatsApp</a>
-      </nav>
-    </div>
-  </header>
 
-  <main class="hero">
-    <div class="container grid">
-      <div class="card">
-        <span class="badge">Pronta entrega limitada</span>
-        <h1>Temos pronta entrega poucas unidades de Travessa do Amor</h1>
-        <p class="lead">Morango, Brigadeiro de Ninho e ganache de chocolate com granulado. 250g de delícia por apenas <strong>10 reais</strong>.</p>
-        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px">
-          <a href="#travessa" class="btn primary">Ver Travessa do Amor</a>
-          <a href="#bombonzão" class="btn ghost">Conhecer o Bombonzão</a>
-        </div>
-        <p class="sub" style="margin-top:14px">Encomendas saindo e temos pronta entrega para final de semana.</p>
-      </div>
-      <figure class="hero-media">
-        <!-- Imagem grande, opção 3: PNG pesado. Substitua pelo arquivo real em PNG -->
-        <img src="imgs/travessa-empilhada.png" alt="Duas travessas do amor com morango, brigadeiro de ninho e ganache de chocolate" />
-      </figure>
-    </div>
-  </main>
+  <!-- Sidebar completa -->
+  <nav class="sidebar">
+    <h2>Lauro Mazzoni</h2> 
+    <ul>
+      <li><a href="#resumo">Resumo Profissional</a></li>
+      <li><a href="#formacao">Formação Acadêmica</a></li>
+      <li><a href="#certificacoes">Certificações</a></li>
+      <li><a href="#portfolio">Portfólio</a></li>
+      <li><a href="#experiencia">Experiência Profissional</a></li>
+      <li><a href="#projetos">Projetos</a></li>
+      <li><a href="#competencias">Competências Técnicas</a></li>
+      <li><a href="#cursos">Cursos</a></li>
+      <li><a href="#softskills">Soft Skills</a></li>
+      <li><a href="#idioma">Idioma</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+  </nav>
 
-  <section id="travessa" class="promo">
-    <div class="container">
-      <h2 class="title">Travessa do Amor</h2>
-      <p class="sub">Camadas de morango fresco, Brigadeiro de Ninho e ganache de chocolate com granulado.</p>
-      <div class="grid-3">
-        <div class="card">
-          <img src="imgs/travessas-bandeja.png" alt="Travessas do amor na bandeja, prontas para entrega" />
-          <p class="big">250g por apenas <span class="price">R$ 10,00</span></p>
-          <p class="sub">Pronta entrega. Unidades limitadas.</p>
-          <a class="btn primary" href="#contato" data-produto="Travessa do Amor">Quero agora</a>
-        </div>
-        <div class="card">
-          <img src="imgs/travessas-choco1.png" alt="Travessas com cobertura de ganache e granulado" />
-          <p>Ganache brilhante com granulado. Ideal para sobremesa rápida e presente simples.</p>
-          <span class="tag">Feito artesanalmente</span>
-        </div>
-        <div class="card">
-          <img src="imgs/travessas-choco2.png" alt="Travessas ao ar livre com morangos visíveis" />
-          <p>Camadas visíveis de morango e creme. Visual que abre o apetite.</p>
-          <span class="tag">Fresco do dia</span>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- Conteúdo -->
+  <div class="content">
+    <h1>Currículo</h1>
+    <h2>Lauro Mazzoni</h2> 
+    <hr />
+<h4><p class="head">Visitantes: <span id="visits"></span></p></h4>    
+    <p class="head" id="resumo">Resumo Profissional</p>
+    <ul>
+      <li>10+ anos em TI: Infraestrutura, operações, suporte e desenvolvimento</li>
+      <li>Experiência com Kubernetes, AWS, Terraform, Docker, Ansible e mais</li>
+      <li>IA aliada ao ecossistema DevOps para promover uma melhor produtividade técnica</li>
+    </ul>
 
-  <section id="bombonzão">
-    <div class="container">
-      <h2 class="title">Olha que lindo e delicioso presente</h2>
-      <p class="sub">Para qualquer momento. Bombonzão de morango coberto com chocolate.</p>
-      <div class="grid-3">
-        <figure class="card">
-          <img src="imgs/caixa-morangos-1.png" alt="Caixa vermelha com seis morangos cobertos com chocolate" />
-          <figcaption class="sub">Apresentação elegante para presentear.</figcaption>
-        </figure>
-        <figure class="card">
-          <img src="imgs/caixa-morangos-laco.png" alt="Caixa de morangos com laço vermelho" />
-          <figcaption class="sub">Opção com laço para ocasiões especiais.</figcaption>
-        </figure>
-        <figure class="card">
-          <img src="imgs/caixa-morangos-aberta.png" alt="Seis morangos cobertos com chocolate vistos de cima" />
-          <figcaption class="sub">Chocolate crocante com acabamento artesanal.</figcaption>
-        </figure>
-      </div>
-      <div style="margin-top:14px">
-        <a class="btn primary" href="#contato" data-produto="Bombonzão de Morango">Reservar Bombonzão</a>
-      </div>
-    </div>
-  </section>
+    <p class="head" id="formacao">Formação Acadêmica</p>
+    <ul>
+      <li>Bacharel em Ciência da Computação – UNIPAC</li>
+    </ul>
 
-  <section id="galeria" class="stripe">
-    <div class="container">
-      <h2 class="title">Galeria</h2>
-      <p class="sub">Imagens reais de produtos artesanais</p>
-      <div class="gallery">
-        <img src="imgs/travessa-empilhada.png" alt="Travessas empilhadas" />
-        <img src="imgs/travessas-bandeja.png" alt="Travessas na bandeja" />
-        <img src="imgs/caixa-morangos-1.png" alt="Caixa de morangos 1" />
-        <img src="imgs/caixa-morangos-laco.png" alt="Caixa com laço" />
-        <img src="imgs/caixa-morangos-aberta.png" alt="Caixa aberta de morangos" />
-        <img src="imgs/travessas-choco3.png" alt="Travessas com granulado" />
-      </div>
-    </div>
-  </section>
+    <p class="head" id="certificacoes">Certificações</p>
+    <ul>
+      <li>AWS Certified Cloud Practitioner:</li>
+      <div data-iframe-width="150" data-iframe-height="270"
+           data-share-badge-id="38103ec7-6727-47da-b8e2-6bf1bc4baeec"
+           data-share-badge-host="https://www.credly.com/badges/38103ec7-6727-47da-b8e2-6bf1bc4baeec/public_url"></div>
+      <li>AWS Certified Solutions Architect – Associate (Cursando)</li>
+    </ul>
 
-  <section id="encomendas">
-    <div class="container">
-      <h2 class="title">Encomendas e pronta entrega</h2>
-      <p class="sub">Encomendas saindo e temos pronta entrega para final de semana. Fale com a gente agora pelo WhatsApp.</p>
-      <div class="card">
-        <form id="form" class="big" novalidate>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px">
-            <div>
-              <label for="nome">Nome</label>
-              <input id="nome" name="nome" required placeholder="Seu nome" style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.15); background:transparent; color:var(--ink)" />
-            </div>
-            <div>
-              <label for="telefone">WhatsApp</label>
-              <input id="telefone" name="telefone" required placeholder="(00) 00000-0000" style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.15); background:transparent; color:var(--ink)" />
-            </div>
-          </div>
-          <div style="margin-top:12px">
-            <label for="produto">Produto</label>
-            <select id="produto" name="produto" style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.15); background:transparent; color:var(--ink)">
-              <option>Travessa do Amor</option>
-              <option>Bombonzão de Morango</option>
-            </select>
-          </div>
-          <div style="margin-top:12px">
-            <label for="msg">Mensagem</label>
-            <textarea id="msg" name="msg" rows="3" placeholder="Quero 2 unidades para sexta à noite" style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.15); background:transparent; color:var(--ink)"></textarea>
-          </div>
-          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:16px">
-            <button type="submit" class="btn primary">Enviar no WhatsApp</button>
-            <a class="btn ghost" href="#travessa">Ver preços</a>
-          </div>
-          <div id="feedback" class="sub" role="status" style="margin-top:10px"></div>
-        </form>
-      </div>
-    </div>
-  </section>
+    <p class="head" id="portfolio">Portfólio</p>
+    <ul>
+      <li>
+        <a href="https://medium.com/@lauromazzoni" class="medium" target="_blank">
+          medium.com/@lauromazzoni
+        </a>
+      </li>
+    </ul>
 
-  <section id="faq" class="faq">
-    <div class="container">
-      <h2 class="title">Dúvidas rápidas</h2>
-      <details>
-        <summary>As fotos são reais?</summary>
-        <p>Sim. Imagens reais de produtos artesanais preparados por nós.</p>
-      </details>
-      <br />
-      <details>
-        <summary>Tem entrega?</summary>
-        <p>Sim. Consulte taxa e horário no WhatsApp. Para retirada, combinamos o melhor horário.</p>
-      </details>
-      <br />
-      <details>
-        <summary>Quantas unidades ainda temos hoje?</summary>
-        <p>O estoque muda durante o dia. Clique em Pedir no WhatsApp que respondemos na hora.</p>
-      </details>
-    </div>
-  </section>
+    <p class="head" id="experiencia">Experiência Profissional</p>
+	<ul>
+	  <li>
+	    <strong>Cadmus / C6 Bank (2025)</strong>:<br>
+	    Tratamento de alertas no ServiceNow; monitoramento via Grafana, Splunk e AppDynamics;  
+	    acionamento suporte aos times, SREs e vendors envolvidos; acompanhamento do incidentes via Microsoft Teams;  
+	    foco em reduzir recorrência dos alertas e auxiliar na resolução
+	  </li>
+	  <li>
+	    <strong>Conecta - provedor de serviços de internet</strong>:<br> 
+	    Suporte Help Desk para empresas e clientes residenciais; correção de configurações; liderança de visitas técnicas;  
+	    documentação de procedimentos; melhoria de processos do help desk
+	  </li>
+	  <li>
+	    <strong>Universidade Federal de São João del Rei (UFSJ) - Núcleo de Educação a Distância (NEAD) </strong>:<br>
+	    Administração do Moodle; suporte a docentes, tutores, alunos e polos; manutenção de infraestrutura;  
+	    servidores Linux e Windows Server 2008; palestras e treinamentos para 50+ colaboradores
+	  </li>
+	  <li>
+	    <strong>Farmácia de Manipulação Colonial</strong>:<br>
+	    Na matriz e filial era responsável pela administração de sistemas e rede; manutenção preventiva e corretiva; reestruturação da infraestrutura;  
+	    configuração de softwares; monitoramento de desempenho; backups regulares
+	  </li>
+	</ul>
 
-  <footer class="foot">
-    <div class="container" style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap">
-      <small>© <span id="ano"></span> Doces Artesanais. Todos os direitos reservados.</small>
-      <small><a href="#topo">Voltar ao topo</a></small>
-    </div>
-  </footer>
+    <p class="head" id="projetos">Projetos</p>
+    <ul>
+      <li>E-commerce automatizado na AWS (Magento, Terraform, Ansible, 2024)</li>
+      <li>Instâncias EC2 com Terraform e Ansible (2023)</li>
+      <li>Aplicação escalável com Beanstalk, CloudFront, DynamoDB (2023)</li>
+      <li>Migração de workload e IAM automatizado (2023)</li>
+    </ul>
 
-  <script>
-    const $ = s => document.querySelector(s);
-    const wpp = (texto) => `https://wa.me/5531999999999?text=${encodeURIComponent(texto)}`; // troque pelo número real
+    <p class="head" id="competencias">Competências Técnicas</p>
+    <ul>
+      <li>
+        <p class="subtitle">Cloud / Infraestrutura</p>
+        <ul>
+          <li>AWS, Terraform, Ansible, VMware, Linux</li>
+        </ul>
+      </li>
+      <li>
+        <p class="subtitle">Monitoramento</p>
+        <ul>
+          <li>Grafana, Prometheus, Splunk, Zabbix, AppDynamics</li>
+        </ul>
+      </li>
+      <li>
+        <p class="subtitle">Containerização / Orquestração</p>
+        <ul>
+          <li>Docker, Kubernetes</li>
+        </ul>
+      </li>
+      <li>
+        <p class="subtitle">Desenvolvimento</p>
+        <ul>
+          <li>Node.js, PHP, Laravel, JavaScript, React.js, MySQL, MongoDB</li>
+        </ul>
+      </li>
+      <li>
+        <p class="subtitle">Automação</p>
+        <ul>
+          <li>CI/CD, GitHub Actions</li>
+        </ul>
+      </li>
+      <li>
+        <p class="subtitle">ITSM / Suporte</p>
+        <ul>
+          <li>ServiceNow, atendimento ao cliente, resolução de problemas</li>
+        </ul>
+      </li>
+    </ul>
 
-    // Preenche o CTA com base no clique em cards
-    document.querySelectorAll('[data-produto]').forEach(el=>{
-      el.addEventListener('click', () => {
-        const p = el.getAttribute('data-produto');
-        $('#produto').value = p;
-      });
-    });
+    <p class="head" id="cursos">Cursos</p>
+    <ul>
+      <li>DevOps Pro, The Cloud Bootcamp</li>
+      <li>Node.js, Laravel, PHP</li>
+      <li>Cisco CCNA 1 a 4</li>
+    </ul>
 
-    // Formulário -> abre WhatsApp com mensagem pronta
-    $('#form').addEventListener('submit', (e)=>{
-      e.preventDefault();
-      const nome = $('#nome').value.trim();
-      const tel = $('#telefone').value.trim();
-      const prod = $('#produto').value;
-      const msg = $('#msg').value.trim() || 'Olá. Quero reservar.';
-      if(!nome || !tel){ $('#feedback').textContent = 'Preencha nome e WhatsApp.'; $('#feedback').style.color = '#ffb3b3'; return; }
-      const texto = `Olá, meu nome é ${nome}. Quero ${prod}. Meu WhatsApp: ${tel}. Mensagem: ${msg}`;
-      window.location.href = wpp(texto);
-    });
+    <p class="head" id="softskills">Soft Skills</p>
+    <ul>
+      <li>Comunicação, Proatividade, Trabalho em equipe</li>
+      <li>Resolução de problemas, Inovação, Adaptabilidade</li>
+    </ul>
 
-    // Ano no rodapé
-    $('#ano').textContent = new Date().getFullYear();
-  </script>
+    <p class="head" id="idioma">Idioma</p>
+    <ul>
+      <li>Inglês – Intermediário (compreensão auditiva avançada; comunicação oral funcional)</li>
+    </ul>
+
+    <p class="head" id="contato">Contato</p>
+    <ul>
+      <li>Email: lauromazzoni@gmail.com</li>
+      <li>Celular: (32) 98837-4779</li>
+      <li>LinkedIn: <a href="https://www.linkedin.com/in/lauro-mazzoni/" target="_blank">lauro-mazzoni</a></li>
+      <li>Endereço: São João Del Rei - MG</li>
+    </ul>
+  </div>
+
+  <script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
+
