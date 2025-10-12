@@ -3,420 +3,241 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Produto X — Simples, direto e eficiente</title>
-  <meta name="description" content="Landing page moderna para conversão: destaque do produto, benefícios, prova social, planos, FAQ e formulário com validação." />
-  <meta name="author" content="Seu Nome" />
-  <meta property="og:title" content="Produto X — Simples, direto e eficiente" />
-  <meta property="og:description" content="Landing page moderna para conversão: destaque do produto, benefícios, prova social, planos, FAQ e formulário com validação." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 630'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%233b82f6'/%3E%3Cstop offset='1' stop-color='%238b5cf6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1200' height='630' fill='url(%23g)'/%3E%3Ctext x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Inter,system-ui,-apple-system,Segoe UI,Roboto' font-size='56' font-weight='700'%3EProduto X%3C/text%3E%3C/svg%3E" />
-  <meta name="theme-color" content="#0f172a" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%233b82f6'/%3E%3Cstop offset='1' stop-color='%238b5cf6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='50' r='48' fill='url(%23g)'/%3E%3Cpath d='M32 53l12 12 24-30' fill='none' stroke='white' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
-
+  <title>Doces Artesanais • Travessa do Amor e Bombonzão de Morango</title>
+  <meta name="description" content="Pronta entrega limitada de Travessa do Amor e Bombonzão de Morango. Morango, Brigadeiro de Ninho e ganache de chocolate com granulado. 250g por apenas 10 reais. Encomendas para o fim de semana." />
+  <meta name="theme-color" content="#b4231a" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23b4231a'/%3E%3Cstop offset='1' stop-color='%23ff6b6b'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='50' r='46' fill='url(%23g)'/%3E%3Cpath d='M25 40c0-9 7-16 16-16 6 0 11 3 14 7 3-4 8-7 14-7 9 0 16 7 16 16 0 21-30 33-30 33S25 61 25 40z' fill='%23fff'/%3E%3C/svg%3E" />
   <style>
     :root{
-      --bg: #0b1220;
-      --bg-soft:#0f172a;
-      --bg-card:#111827;
-      --text:#e5e7eb;
-      --muted:#94a3b8;
-      --primary:#3b82f6;
-      --primary-2:#8b5cf6;
-      --accent:#22d3ee;
-      --ring: 0 0 0 3px rgba(59,130,246,.35);
-      --radius: 16px;
-      --shadow: 0 10px 30px rgba(2,6,23,.6);
-      --shadow-soft: 0 4px 14px rgba(2,6,23,.45);
-    }
-    @media (prefers-color-scheme: light){
-      :root{ --bg:#ffffff; --bg-soft:#f8fafc; --bg-card:#ffffff; --text:#0f172a; --muted:#475569; --shadow:0 10px 30px rgba(2,6,23,.08); --shadow-soft:0 4px 14px rgba(2,6,23,.06);}
-      body{background: linear-gradient(180deg,#ffffff 0%,#f8fafc 60%, #eef2ff 100%)}
+      --bg:#0e0a0a; --ink:#f9fafb; --muted:#e5e7eb; --soft:#1a1414; --brand:#b4231a; --brand2:#ff6b6b; --choc:#3b2f2f; --radius:18px; --shadow:0 18px 60px rgba(0,0,0,.5);
     }
     *,*:before,*:after{box-sizing:border-box}
     html,body{height:100%}
-    body{margin:0; font:16px/1.6 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:var(--text); background:linear-gradient(180deg,#0b1220 0%,#0f172a 60%, #0b1220 100%)}
+    body{margin:0; font:16px/1.6 Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; color:var(--ink); background:radial-gradient(60% 100% at 0% 0%, rgba(255,107,107,.08), transparent 60%), radial-gradient(60% 100% at 100% 0%, rgba(180,35,26,.08), transparent 60%), #0e0a0a}
     a{color:inherit; text-decoration:none}
     img{max-width:100%; display:block}
-    .container{max-width:1100px; margin:0 auto; padding:0 20px}
-    .btn{display:inline-flex; align-items:center; gap:10px; padding:14px 18px; border-radius:999px; background:linear-gradient(90deg,var(--primary),var(--primary-2)); color:white; font-weight:600; box-shadow:var(--shadow); border:0; cursor:pointer; transition:transform .15s ease, filter .2s ease}
-    .btn:hover{transform:translateY(-2px)}
-    .btn.secondary{background:transparent; border:1px solid rgba(148,163,184,.25); color:var(--text)}
-    .pill{display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; background:rgba(59,130,246,.12); color:#93c5fd; font-weight:600; font-size:12px; letter-spacing:.3px}
-    header{position:sticky; top:0; z-index:50; background:rgba(15,23,42,.7); backdrop-filter:saturate(140%) blur(10px); border-bottom:1px solid rgba(148,163,184,.12)}
+    .container{max-width:1120px; margin:0 auto; padding:0 20px}
+    header{position:sticky; top:0; z-index:40; background:rgba(14,10,10,.7); backdrop-filter:blur(10px); border-bottom:1px solid rgba(255,255,255,.08)}
     .nav{display:flex; align-items:center; justify-content:space-between; height:64px}
-    .brand{display:flex; align-items:center; gap:12px; font-weight:800}
-    .brand svg{width:28px; height:28px}
-    .menu{display:flex; gap:18px; align-items:center}
-    .menu a{padding:8px 12px; border-radius:10px}
-    .menu a:hover{background:rgba(148,163,184,.12)}
-    .hamb{display:none; background:transparent; border:0; color:var(--text)}
-    @media (max-width:900px){ .menu{display:none} .hamb{display:block} }
-
-    .hero{padding:64px 0 48px; position:relative; overflow:hidden}
-    .hero-grid{display:grid; grid-template-columns: 1.1fr .9fr; gap:32px; align-items:center}
-    .hero h1{font-size: clamp(28px, 4.2vw, 52px); line-height:1.1; margin:14px 0}
-    .hero p{font-size: clamp(16px, 1.6vw, 18px); color:var(--muted)}
-    .hero-card{background: radial-gradient(80% 120% at 0% 0%, rgba(59,130,246,.25), transparent 60%), radial-gradient(90% 140% at 100% 0%, rgba(139,92,246,.25), transparent 60%), var(--bg-card); border:1px solid rgba(148,163,184,.16); padding:24px; border-radius:var(--radius); box-shadow:var(--shadow)}
-
-    .badges{display:flex; gap:12px; flex-wrap:wrap}
-    .cta-row{display:flex; gap:12px; flex-wrap:wrap; margin-top:16px}
-
-    .art{position:relative; aspect-ratio:1/1; border-radius:20px; overflow:hidden; box-shadow:var(--shadow); border:1px solid rgba(148,163,184,.16)}
-    .glow{position:absolute; inset:-40%; background:conic-gradient(from 0deg, rgba(34,211,238,.1), transparent 30%, rgba(59,130,246,.12) 60%, transparent 90%); filter:blur(40px); animation:spin 20s linear infinite}
-    @keyframes spin{to{transform:rotate(1turn)}}
-
-    .logos{opacity:.9; display:grid; grid-template-columns:repeat(6,1fr); gap:18px; padding:20px; border:1px dashed rgba(148,163,184,.2); border-radius:16px}
-    .logos svg{width:100%; height:36px; opacity:.7}
-    @media (max-width:900px){ .hero-grid{grid-template-columns:1fr} .logos{grid-template-columns:repeat(3,1fr)} }
-
-    section{padding:64px 0}
-    .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
-    @media(max-width:900px){ .grid-3{grid-template-columns:1fr} }
-    .card{background:var(--bg-card); border:1px solid rgba(148,163,184,.16); border-radius:16px; padding:22px; box-shadow:var(--shadow-soft)}
-    .card h3{margin:8px 0 6px}
-    .card p{color:var(--muted)}
-
-    .section-title{font-size: clamp(22px, 3vw, 36px); line-height:1.15; margin:0 0 6px}
-    .section-sub{color:var(--muted); margin:0 0 24px}
-
-    .pricing{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
-    .price{border:1px solid rgba(148,163,184,.16); border-radius:18px; background:linear-gradient(0deg, rgba(59,130,246,.06), transparent 40%), var(--bg-card); padding:22px}
-    .price h4{margin:0}
-    .price .value{font-size:36px; font-weight:800; margin:8px 0}
-    .price ul{padding-left:18px; color:var(--muted);}
-    .price .btn{width:100%; justify-content:center}
-    .popular{outline: var(--ring)}
-    @media(max-width:900px){ .pricing{grid-template-columns:1fr} }
-
-    .faq details{border:1px solid rgba(148,163,184,.16); border-radius:14px; background:var(--bg-card); padding:14px 16px}
-    .faq details summary{cursor:pointer; font-weight:600}
-    .faq details p{color:var(--muted)}
-
-    .contact{display:grid; grid-template-columns:1.2fr .8fr; gap:20px}
-    @media(max-width:900px){ .contact{grid-template-columns:1fr} }
-    form{display:grid; gap:12px}
-    input, textarea, select{width:100%; padding:12px 14px; border-radius:12px; border:1px solid rgba(148,163,184,.25); background:transparent; color:var(--text)}
-    input:focus, textarea:focus, select:focus{outline:none; box-shadow:var(--ring); border-color:transparent}
-    label{font-size:14px; color:var(--muted)}
-    .hint{font-size:12px; color:var(--muted)}
-
-    footer{padding:28px 0; border-top:1px solid rgba(148,163,184,.16); color:var(--muted)}
+    .brand{display:flex; gap:10px; align-items:center; font-weight:900}
+    .dot{width:12px; height:12px; border-radius:999px; background:linear-gradient(90deg,var(--brand),var(--brand2)); box-shadow:0 0 0 4px rgba(255,107,107,.2)}
+    .menu{display:flex; gap:16px}
+    .menu a{padding:8px 12px; border-radius:12px}
+    .menu a:hover{background:rgba(255,255,255,.06)}
+    .btn{display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:14px 20px; border-radius:999px; font-weight:700; border:0; cursor:pointer; box-shadow:var(--shadow)}
+    .btn.primary{background:linear-gradient(90deg,var(--brand),var(--brand2)); color:white}
+    .btn.ghost{background:transparent; color:var(--ink); border:1px solid rgba(255,255,255,.15)}
+    .hero{padding:48px 0 32px}
+    .grid{display:grid; grid-template-columns:1.1fr .9fr; gap:28px; align-items:center}
+    @media (max-width:920px){ .grid{grid-template-columns:1fr} }
+    .card{background:var(--soft); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow)}
+    h1{font-size: clamp(28px, 4.4vw, 56px); line-height:1.05; margin:10px 0}
+    .lead{color:var(--muted)}
+    .badge{display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; background:rgba(255,107,107,.12); color:#ffc9c9; font-weight:700; font-size:12px}
+    .hero-media{position:relative; border-radius:22px; overflow:hidden; border:1px solid rgba(255,255,255,.1); box-shadow:var(--shadow)}
+    .hero-media img{width:100%; height:auto}
+    section{padding:60px 0}
+    .title{font-size: clamp(22px, 3.2vw, 38px); margin:0 0 6px}
+    .sub{color:var(--muted); margin:0 0 18px}
+    .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+    @media(max-width:920px){ .grid-3{grid-template-columns:1fr} }
+    .price{font-size:42px; font-weight:900}
+    .big{font-size:18px}
+    .gallery{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
+    @media(max-width:920px){ .gallery{grid-template-columns:1fr 1fr} }
+    .gallery img{border-radius:16px; border:1px solid rgba(255,255,255,.08)}
+    .stripe{background:linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px), linear-gradient(180deg, rgba(255,255,255,.06) 1px, transparent 1px); background-size: 22px 22px, 22px 22px}
+    .tag{display:inline-block; padding:6px 10px; border-radius:10px; background:#221616; color:#ffb3b3; font-weight:700; font-size:12px; border:1px solid rgba(255,255,255,.08)}
+    .faq details{background:#1a1515; border:1px solid rgba(255,255,255,.1); padding:14px 16px; border-radius:14px}
+    .faq summary{cursor:pointer; font-weight:700}
+    .foot{padding:28px 0; border-top:1px solid rgba(255,255,255,.1); color:#ddd}
+    .promo{background: radial-gradient(60% 120% at 0% 0%, rgba(255,107,107,.1), transparent 60%), radial-gradient(60% 120% at 100% 30%, rgba(59,47,47,.35), transparent 60%)}
   </style>
 </head>
 <body>
   <header>
     <div class="container nav">
-      <a class="brand" href="#topo" aria-label="Ir para o topo">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 3l8.66 5v8L12 21l-8.66-5V8L12 3z" stroke="url(#lg)" stroke-width="1.5"/><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#3b82f6"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs></svg>
-        <span>Produto X</span>
-      </a>
-      <nav class="menu" aria-label="Principal">
-        <a href="#produto">Produto</a>
-        <a href="#beneficios">Benefícios</a>
-        <a href="#prova">Prova</a>
-        <a href="#planos">Planos</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contato" class="btn" data-cta="menu">Começar</a>
+      <div class="brand"><span class="dot" aria-hidden="true"></span><span>Doces Artesanais</span></div>
+      <nav class="menu" aria-label="principal">
+        <a href="#travessa">Travessa do Amor</a>
+        <a href="#bombonzão">Bombonzão</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#encomendas">Encomendas</a>
+        <a href="#contato" class="btn primary">Pedir no WhatsApp</a>
       </nav>
-      <button class="hamb" id="hamb" aria-label="Abrir menu" aria-expanded="false">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-      </button>
     </div>
   </header>
 
-  <main id="topo" class="hero">
-    <div class="container hero-grid">
-      <div class="hero-card">
-        <span class="pill">Lançamento</span>
-        <h1>Converta visitas em clientes com uma página simples e eficiente</h1>
-        <p>Apresente sua oferta com clareza, prove valor em segundos e guie o visitante a uma ação direta. Design responsivo, rápido e preparado para testes A/B.</p>
-        <div class="cta-row">
-          <a href="#contato" class="btn" data-cta="hero">Começar agora</a>
-          <a href="#produto" class="btn secondary">Ver como funciona</a>
+  <main class="hero">
+    <div class="container grid">
+      <div class="card">
+        <span class="badge">Pronta entrega limitada</span>
+        <h1>Temos pronta entrega poucas unidades de Travessa do Amor</h1>
+        <p class="lead">Morango, Brigadeiro de Ninho e ganache de chocolate com granulado. 250g de delícia por apenas <strong>10 reais</strong>.</p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px">
+          <a href="#travessa" class="btn primary">Ver Travessa do Amor</a>
+          <a href="#bombonzão" class="btn ghost">Conhecer o Bombonzão</a>
         </div>
-        <div class="logos" aria-label="Marcas atendidas">
-          <svg viewBox="0 0 100 24" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="24" rx="6" fill="rgba(148,163,184,.12)"/><text x="50" y="16" text-anchor="middle" fill="rgba(148,163,184,.7)" font-size="10" font-weight="700">LOGO 1</text></svg>
-          <svg viewBox="0 0 100 24" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="24" rx="6" fill="rgba(148,163,184,.12)"/><text x="50" y="16" text-anchor="middle" fill="rgba(148,163,184,.7)" font-size="10" font-weight="700">LOGO 2</text></svg>
-          <svg viewBox="0 0 100 24" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="24" rx="6" fill="rgba(148,163,184,.12)"/><text x="50" y="16" text-anchor="middle" fill="rgba(148,163,184,.7)" font-size="10" font-weight="700">LOGO 3</text></svg>
-          <svg viewBox="0 0 100 24" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="24" rx="6" fill="rgba(148,163,184,.12)"/><text x="50" y="16" text-anchor="middle" fill="rgba(148,163,184,.7)" font-size="10" font-weight="700">LOGO 4</text></svg>
-          <svg viewBox="0 0 100 24" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="24" rx="6" fill="rgba(148,163,184,.12)"/><text x="50" y="16" text-anchor="middle" fill="rgba(148,163,184,.7)" font-size="10" font-weight="700">LOGO 5</text></svg>
-          <svg viewBox="0 0 100 24" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="24" rx="6" fill="rgba(148,163,184,.12)"/><text x="50" y="16" text-anchor="middle" fill="rgba(148,163,184,.7)" font-size="10" font-weight="700">LOGO 6</text></svg>
-        </div>
+        <p class="sub" style="margin-top:14px">Encomendas saindo e temos pronta entrega para final de semana.</p>
       </div>
-      <figure class="art" aria-label="Ilustração do produto">
-        <div class="glow" aria-hidden="true"></div>
-        <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" width="600" height="600" role="img" aria-label="Mockup">
-          <defs>
-            <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#3b82f6"/>
-              <stop offset="100%" stop-color="#8b5cf6"/>
-            </linearGradient>
-          </defs>
-          <rect x="40" y="40" width="520" height="320" rx="24" fill="#0b1220" stroke="url(#grad)" stroke-width="3"/>
-          <rect x="60" y="70" width="160" height="20" rx="6" fill="#1f2937"/>
-          <rect x="60" y="100" width="220" height="14" rx="6" fill="#1f2937"/>
-          <rect x="60" y="130" width="300" height="14" rx="6" fill="#1f2937"/>
-          <rect x="60" y="160" width="240" height="14" rx="6" fill="#1f2937"/>
-          <rect x="60" y="200" width="480" height="120" rx="12" fill="#111827" stroke="rgba(148,163,184,.18)"/>
-          <circle cx="240" cy="460" r="120" fill="url(#grad)" opacity=".15"/>
-          <rect x="180" y="420" width="280" height="48" rx="12" fill="#0b1220" stroke="#3b82f6"/>
-          <text x="320" y="452" text-anchor="middle" fill="#cbd5e1" font-size="16" font-weight="700">Botão de Ação</text>
-        </svg>
+      <figure class="hero-media">
+        <!-- Imagem grande, opção 3: PNG pesado. Substitua pelo arquivo real em PNG -->
+        <img src="imgs/travessa-empilhada.png" alt="Duas travessas do amor com morango, brigadeiro de ninho e ganache de chocolate" />
       </figure>
     </div>
   </main>
 
-  <section id="produto">
+  <section id="travessa" class="promo">
     <div class="container">
-      <h2 class="section-title">Como funciona</h2>
-      <p class="section-sub">Uma sequência clara que remove fricção e leva o visitante ao próximo passo.</p>
+      <h2 class="title">Travessa do Amor</h2>
+      <p class="sub">Camadas de morango fresco, Brigadeiro de Ninho e ganache de chocolate com granulado.</p>
       <div class="grid-3">
         <div class="card">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
-          <h3>Headline objetiva</h3>
-          <p>Explique o ganho principal em uma frase. Evite jargões. Mostre a transformação.</p>
+          <img src="imgs/travessas-bandeja.png" alt="Travessas do amor na bandeja, prontas para entrega" />
+          <p class="big">250g por apenas <span class="price">R$ 10,00</span></p>
+          <p class="sub">Pronta entrega. Unidades limitadas.</p>
+          <a class="btn primary" href="#contato" data-produto="Travessa do Amor">Quero agora</a>
         </div>
         <div class="card">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8"/></svg>
-          <h3>Prova em segundos</h3>
-          <p>Depoimentos curtos, números claros e selos de confiança. Foque no essencial.</p>
+          <img src="imgs/travessas-choco1.png" alt="Travessas com cobertura de ganache e granulado" />
+          <p>Ganache brilhante com granulado. Ideal para sobremesa rápida e presente simples.</p>
+          <span class="tag">Feito artesanalmente</span>
         </div>
         <div class="card">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12h16M4 17h10M4 7h16"/></svg>
-          <h3>CTA sem atrito</h3>
-          <p>Peça uma única ação por vez. Botões visíveis, microcopy direto, sem distrações.</p>
+          <img src="imgs/travessas-choco2.png" alt="Travessas ao ar livre com morangos visíveis" />
+          <p>Camadas visíveis de morango e creme. Visual que abre o apetite.</p>
+          <span class="tag">Fresco do dia</span>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="beneficios">
+  <section id="bombonzão">
     <div class="container">
-      <h2 class="section-title">Benefícios</h2>
-      <p class="section-sub">Resultados práticos que importam para o negócio.</p>
+      <h2 class="title">Olha que lindo e delicioso presente</h2>
+      <p class="sub">Para qualquer momento. Bombonzão de morango coberto com chocolate.</p>
       <div class="grid-3">
-        <div class="card"><h3>Carrega rápido</h3><p>HTML limpo, imagens leves e cache eficiente para melhorar o SEO e a conversão.</p></div>
-        <div class="card"><h3>Responsivo</h3><p>Pronto para mobile, tablet e desktop. Nada de zoom manual ou layout quebrado.</p></div>
-        <div class="card"><h3>Pronto para testes</h3><p>Estrutura pensada para A/B: headline, herói, CTA e prova separados e fáceis de trocar.</p></div>
+        <figure class="card">
+          <img src="imgs/caixa-morangos-1.png" alt="Caixa vermelha com seis morangos cobertos com chocolate" />
+          <figcaption class="sub">Apresentação elegante para presentear.</figcaption>
+        </figure>
+        <figure class="card">
+          <img src="imgs/caixa-morangos-laco.png" alt="Caixa de morangos com laço vermelho" />
+          <figcaption class="sub">Opção com laço para ocasiões especiais.</figcaption>
+        </figure>
+        <figure class="card">
+          <img src="imgs/caixa-morangos-aberta.png" alt="Seis morangos cobertos com chocolate vistos de cima" />
+          <figcaption class="sub">Chocolate crocante com acabamento artesanal.</figcaption>
+        </figure>
+      </div>
+      <div style="margin-top:14px">
+        <a class="btn primary" href="#contato" data-produto="Bombonzão de Morango">Reservar Bombonzão</a>
       </div>
     </div>
   </section>
 
-  <section id="prova">
+  <section id="galeria" class="stripe">
     <div class="container">
-      <h2 class="section-title">Prova social</h2>
-      <p class="section-sub">Histórias curtas e números objetivos funcionam melhor do que promessas vagas.</p>
-      <div class="grid-3">
-        <figure class="card">
-          <blockquote>Subimos a taxa de conversão em 38 por cento na primeira semana.</blockquote>
-          <figcaption class="hint">Ana, e-commerce</figcaption>
-        </figure>
-        <figure class="card">
-          <blockquote>Em 10 dias, 1.200 leads com custo por lead abaixo do esperado.</blockquote>
-          <figcaption class="hint">Rafael, educação</figcaption>
-        </figure>
-        <figure class="card">
-          <blockquote>O layout é simples de editar. Testamos 3 variações sem dor de cabeça.</blockquote>
-          <figcaption class="hint">Marta, SaaS</figcaption>
-        </figure>
+      <h2 class="title">Galeria</h2>
+      <p class="sub">Imagens reais de produtos artesanais</p>
+      <div class="gallery">
+        <img src="imgs/travessa-empilhada.png" alt="Travessas empilhadas" />
+        <img src="imgs/travessas-bandeja.png" alt="Travessas na bandeja" />
+        <img src="imgs/caixa-morangos-1.png" alt="Caixa de morangos 1" />
+        <img src="imgs/caixa-morangos-laco.png" alt="Caixa com laço" />
+        <img src="imgs/caixa-morangos-aberta.png" alt="Caixa aberta de morangos" />
+        <img src="imgs/travessas-choco3.png" alt="Travessas com granulado" />
       </div>
     </div>
   </section>
 
-  <section id="planos">
+  <section id="encomendas">
     <div class="container">
-      <h2 class="section-title">Planos</h2>
-      <p class="section-sub">Escolha pelo estágio do seu projeto, não pelo medo de errar.</p>
-      <div class="pricing">
-        <div class="price card">
-          <h4>Start</h4>
-          <p class="value">R$ 0</p>
-          <ul>
-            <li>Template base</li>
-            <li>Seção de benefícios</li>
-            <li>FAQ e formulário</li>
-          </ul>
-          <button class="btn" data-cta="plano-start">Usar agora</button>
-        </div>
-        <div class="price card popular">
-          <h4>Pro</h4>
-          <p class="value">R$ 199</p>
-          <ul>
-            <li>Teste A/B integrado</li>
-            <li>Componentes extras</li>
-            <li>Otimização de SEO</li>
-          </ul>
-          <button class="btn" data-cta="plano-pro">Escolher Pro</button>
-        </div>
-        <div class="price card">
-          <h4>Empresa</h4>
-          <p class="value">Sob consulta</p>
-          <ul>
-            <li>Design customizado</li>
-            <li>Integrações</li>
-            <li>Suporte prioritário</li>
-          </ul>
-          <button class="btn" data-cta="plano-empresa">Falar com vendas</button>
-        </div>
+      <h2 class="title">Encomendas e pronta entrega</h2>
+      <p class="sub">Encomendas saindo e temos pronta entrega para final de semana. Fale com a gente agora pelo WhatsApp.</p>
+      <div class="card">
+        <form id="form" class="big" novalidate>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px">
+            <div>
+              <label for="nome">Nome</label>
+              <input id="nome" name="nome" required placeholder="Seu nome" style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.15); background:transparent; color:var(--ink)" />
+            </div>
+            <div>
+              <label for="telefone">WhatsApp</label>
+              <input id="telefone" name="telefone" required placeholder="(00) 00000-0000" style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.15); background:transparent; color:var(--ink)" />
+            </div>
+          </div>
+          <div style="margin-top:12px">
+            <label for="produto">Produto</label>
+            <select id="produto" name="produto" style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.15); background:transparent; color:var(--ink)">
+              <option>Travessa do Amor</option>
+              <option>Bombonzão de Morango</option>
+            </select>
+          </div>
+          <div style="margin-top:12px">
+            <label for="msg">Mensagem</label>
+            <textarea id="msg" name="msg" rows="3" placeholder="Quero 2 unidades para sexta à noite" style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.15); background:transparent; color:var(--ink)"></textarea>
+          </div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:16px">
+            <button type="submit" class="btn primary">Enviar no WhatsApp</button>
+            <a class="btn ghost" href="#travessa">Ver preços</a>
+          </div>
+          <div id="feedback" class="sub" role="status" style="margin-top:10px"></div>
+        </form>
       </div>
     </div>
   </section>
 
   <section id="faq" class="faq">
     <div class="container">
-      <h2 class="section-title">Perguntas frequentes</h2>
+      <h2 class="title">Dúvidas rápidas</h2>
       <details>
-        <summary>Posso trocar as imagens com facilidade?</summary>
-        <p>Sim. As imagens principais são SVGs inline por desempenho. Você pode substituí-las por PNG, JPG ou SVG externos usando a tag img com loading="lazy".</p>
+        <summary>As fotos são reais?</summary>
+        <p>Sim. Imagens reais de produtos artesanais preparados por nós.</p>
       </details>
       <br />
       <details>
-        <summary>Como faço teste A/B neste layout?</summary>
-        <p>Há um seletor simples de variação no script. Duplique blocos de headline, CTA e herói, marque com data-variant e alterne via querystring, cookie ou flag.</p>
+        <summary>Tem entrega?</summary>
+        <p>Sim. Consulte taxa e horário no WhatsApp. Para retirada, combinamos o melhor horário.</p>
       </details>
       <br />
       <details>
-        <summary>Funciona sem frameworks?</summary>
-        <p>Sim. É HTML, CSS e JS puros. Você pode portar para React, Next, Vue ou outro quando precisar.</p>
+        <summary>Quantas unidades ainda temos hoje?</summary>
+        <p>O estoque muda durante o dia. Clique em Pedir no WhatsApp que respondemos na hora.</p>
       </details>
     </div>
   </section>
 
-  <section id="contato">
-    <div class="container contact">
-      <div class="card">
-        <h2 class="section-title">Fale com a gente</h2>
-        <p class="section-sub">Vamos entender o objetivo e montar uma proposta direta, sem enrolação.</p>
-        <form id="lead-form" novalidate>
-          <div>
-            <label for="nome">Nome</label>
-            <input id="nome" name="nome" type="text" placeholder="Seu nome" required />
-          </div>
-          <div>
-            <label for="email">E-mail</label>
-            <input id="email" name="email" type="email" placeholder="voce@exemplo.com" required />
-          </div>
-          <div>
-            <label for="telefone">Telefone</label>
-            <input id="telefone" name="telefone" type="tel" inputmode="numeric" placeholder="(00) 00000-0000" />
-            <div class="hint">Opcional. Usamos apenas para retorno rápido.</div>
-          </div>
-          <div>
-            <label for="interesse">Interesse</label>
-            <select id="interesse" name="interesse">
-              <option>Geração de leads</option>
-              <option>Venda direta</option>
-              <option>Pré-lançamento</option>
-              <option>Evento</option>
-              <option>Recrutamento</option>
-            </select>
-          </div>
-          <div>
-            <label for="mensagem">Mensagem</label>
-            <textarea id="mensagem" name="mensagem" rows="4" placeholder="Conte rapidamente seu objetivo"></textarea>
-          </div>
-          <button class="btn" type="submit" data-cta="form">Enviar</button>
-          <div class="hint" id="form-status" role="status" aria-live="polite"></div>
-        </form>
-      </div>
-      <aside class="card">
-        <h3>Atalhos úteis</h3>
-        <ul>
-          <li>Arquivo Figma com componentes</li>
-          <li>Guia de copy rápida</li>
-          <li>Checklist de publicação</li>
-        </ul>
-        <p class="hint">Substitua por links reais do seu projeto.</p>
-      </aside>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container">
-      <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap">
-        <small>© <span id="ano"></span> Produto X. Todos os direitos reservados.</small>
-        <small><a href="#topo">Voltar ao topo</a></small>
-      </div>
+  <footer class="foot">
+    <div class="container" style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap">
+      <small>© <span id="ano"></span> Doces Artesanais. Todos os direitos reservados.</small>
+      <small><a href="#topo">Voltar ao topo</a></small>
     </div>
   </footer>
 
   <script>
     const $ = s => document.querySelector(s);
-    const $$ = s => Array.from(document.querySelectorAll(s));
+    const wpp = (texto) => `https://wa.me/5531999999999?text=${encodeURIComponent(texto)}`; // troque pelo número real
 
-    // Navegação mobile simples
-    const hamb = $('#hamb');
-    hamb.addEventListener('click', ()=>{
-      const nav = document.createElement('div');
-      nav.className = 'mobile-panel';
-      nav.style.position='fixed'; nav.style.inset='64px 16px 16px 16px';
-      nav.style.background='var(--bg-card)'; nav.style.border='1px solid rgba(148,163,184,.16)'; nav.style.borderRadius='16px'; nav.style.padding='12px'; nav.style.boxShadow='var(--shadow)';
-      nav.innerHTML = `
-        <a href="#produto" class="btn secondary" style="width:100%; justify-content:center; margin:6px 0">Produto</a>
-        <a href="#beneficios" class="btn secondary" style="width:100%; justify-content:center; margin:6px 0">Benefícios</a>
-        <a href="#prova" class="btn secondary" style="width:100%; justify-content:center; margin:6px 0">Prova</a>
-        <a href="#planos" class="btn secondary" style="width:100%; justify-content:center; margin:6px 0">Planos</a>
-        <a href="#faq" class="btn secondary" style="width:100%; justify-content:center; margin:6px 0">FAQ</a>
-        <a href="#contato" class="btn" data-cta="menu-mobile" style="width:100%; justify-content:center; margin:6px 0">Começar</a>
-      `;
-      const close = e => { document.body.removeChild(nav); document.removeEventListener('keydown', onEsc) };
-      const onEsc = e => { if(e.key==='Escape') close(); };
-      nav.addEventListener('click', e=>{ if(e.target.tagName==='A') close(); });
-      document.addEventListener('keydown', onEsc);
-      document.body.appendChild(nav);
-      hamb.setAttribute('aria-expanded','true');
-    });
-
-    // Scroll suave nos links locais
-    $$('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', e=>{
-        const id = a.getAttribute('href');
-        const el = document.querySelector(id);
-        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); history.pushState(null,'',id); }
+    // Preenche o CTA com base no clique em cards
+    document.querySelectorAll('[data-produto]').forEach(el=>{
+      el.addEventListener('click', () => {
+        const p = el.getAttribute('data-produto');
+        $('#produto').value = p;
       });
     });
 
-    // Máscara leve de telefone
-    const tel = $('#telefone');
-    tel && tel.addEventListener('input', ()=>{
-      let v = tel.value.replace(/\D/g,'').slice(0,11);
-      if(v.length>6) tel.value = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`
-      else if(v.length>2) tel.value = `(${v.slice(0,2)}) ${v.slice(2)}`
-      else tel.value = v;
-    });
-
-    // Validação simples de formulário
-    const form = $('#lead-form');
-    form.addEventListener('submit', e=>{
+    // Formulário -> abre WhatsApp com mensagem pronta
+    $('#form').addEventListener('submit', (e)=>{
       e.preventDefault();
-      const data = Object.fromEntries(new FormData(form));
-      const status = $('#form-status');
-      if(!data.nome || !data.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)){
-        status.textContent = 'Confira nome e e-mail.'; status.style.color = '#f87171'; return;
-      }
-      status.textContent = 'Enviado com sucesso. Vamos retornar em breve.'; status.style.color = '#34d399';
-      // Aqui você faria um fetch para seu backend/PSP/integração
-      console.log('Lead enviado', data);
-      form.reset();
+      const nome = $('#nome').value.trim();
+      const tel = $('#telefone').value.trim();
+      const prod = $('#produto').value;
+      const msg = $('#msg').value.trim() || 'Olá. Quero reservar.';
+      if(!nome || !tel){ $('#feedback').textContent = 'Preencha nome e WhatsApp.'; $('#feedback').style.color = '#ffb3b3'; return; }
+      const texto = `Olá, meu nome é ${nome}. Quero ${prod}. Meu WhatsApp: ${tel}. Mensagem: ${msg}`;
+      window.location.href = wpp(texto);
     });
-
-    // Coleta mínima de eventos de CTA
-    $$('[data-cta]').forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        const label = btn.getAttribute('data-cta');
-        console.log('CTA', label, { ts: Date.now() });
-      });
-    });
-
-    // Alternador de variação para teste A/B simples via querystring ?v=2
-    const params = new URLSearchParams(location.search);
-    const v = params.get('v');
-    if(v==='2'){
-      const h1 = document.querySelector('.hero h1');
-      h1 && (h1.textContent = 'Explique o valor em 5 segundos e peça uma única ação');
-      const p = document.querySelector('.hero p');
-      p && (p.textContent = 'Corte ruídos, foque no resultado e facilite o clique. Este layout é direto, leve e auditável.');
-    }
 
     // Ano no rodapé
     $('#ano').textContent = new Date().getFullYear();
