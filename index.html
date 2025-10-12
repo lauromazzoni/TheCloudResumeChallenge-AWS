@@ -1,170 +1,425 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<!doctype html>
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="icon" type="image/png" href="favicon.png">
-  <title>Currículo - Lauro Mazzoni</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Produto X — Simples, direto e eficiente</title>
+  <meta name="description" content="Landing page moderna para conversão: destaque do produto, benefícios, prova social, planos, FAQ e formulário com validação." />
+  <meta name="author" content="Seu Nome" />
+  <meta property="og:title" content="Produto X — Simples, direto e eficiente" />
+  <meta property="og:description" content="Landing page moderna para conversão: destaque do produto, benefícios, prova social, planos, FAQ e formulário com validação." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 630'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%233b82f6'/%3E%3Cstop offset='1' stop-color='%238b5cf6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1200' height='630' fill='url(%23g)'/%3E%3Ctext x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Inter,system-ui,-apple-system,Segoe UI,Roboto' font-size='56' font-weight='700'%3EProduto X%3C/text%3E%3C/svg%3E" />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%233b82f6'/%3E%3Cstop offset='1' stop-color='%238b5cf6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='50' r='48' fill='url(%23g)'/%3E%3Cpath d='M32 53l12 12 24-30' fill='none' stroke='white' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+
+  <style>
+    :root{
+      --bg: #0b1220;
+      --bg-soft:#0f172a;
+      --bg-card:#111827;
+      --text:#e5e7eb;
+      --muted:#94a3b8;
+      --primary:#3b82f6;
+      --primary-2:#8b5cf6;
+      --accent:#22d3ee;
+      --ring: 0 0 0 3px rgba(59,130,246,.35);
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(2,6,23,.6);
+      --shadow-soft: 0 4px 14px rgba(2,6,23,.45);
+    }
+    @media (prefers-color-scheme: light){
+      :root{ --bg:#ffffff; --bg-soft:#f8fafc; --bg-card:#ffffff; --text:#0f172a; --muted:#475569; --shadow:0 10px 30px rgba(2,6,23,.08); --shadow-soft:0 4px 14px rgba(2,6,23,.06);}
+      body{background: linear-gradient(180deg,#ffffff 0%,#f8fafc 60%, #eef2ff 100%)}
+    }
+    *,*:before,*:after{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0; font:16px/1.6 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:var(--text); background:linear-gradient(180deg,#0b1220 0%,#0f172a 60%, #0b1220 100%)}
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+    .container{max-width:1100px; margin:0 auto; padding:0 20px}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:14px 18px; border-radius:999px; background:linear-gradient(90deg,var(--primary),var(--primary-2)); color:white; font-weight:600; box-shadow:var(--shadow); border:0; cursor:pointer; transition:transform .15s ease, filter .2s ease}
+    .btn:hover{transform:translateY(-2px)}
+    .btn.secondary{background:transparent; border:1px solid rgba(148,163,184,.25); color:var(--text)}
+    .pill{display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; background:rgba(59,130,246,.12); color:#93c5fd; font-weight:600; font-size:12px; letter-spacing:.3px}
+    header{position:sticky; top:0; z-index:50; background:rgba(15,23,42,.7); backdrop-filter:saturate(140%) blur(10px); border-bottom:1px solid rgba(148,163,184,.12)}
+    .nav{display:flex; align-items:center; justify-content:space-between; height:64px}
+    .brand{display:flex; align-items:center; gap:12px; font-weight:800}
+    .brand svg{width:28px; height:28px}
+    .menu{display:flex; gap:18px; align-items:center}
+    .menu a{padding:8px 12px; border-radius:10px}
+    .menu a:hover{background:rgba(148,163,184,.12)}
+    .hamb{display:none; background:transparent; border:0; color:var(--text)}
+    @media (max-width:900px){ .menu{display:none} .hamb{display:block} }
+
+    .hero{padding:64px 0 48px; position:relative; overflow:hidden}
+    .hero-grid{display:grid; grid-template-columns: 1.1fr .9fr; gap:32px; align-items:center}
+    .hero h1{font-size: clamp(28px, 4.2vw, 52px); line-height:1.1; margin:14px 0}
+    .hero p{font-size: clamp(16px, 1.6vw, 18px); color:var(--muted)}
+    .hero-card{background: radial-gradient(80% 120% at 0% 0%, rgba(59,130,246,.25), transparent 60%), radial-gradient(90% 140% at 100% 0%, rgba(139,92,246,.25), transparent 60%), var(--bg-card); border:1px solid rgba(148,163,184,.16); padding:24px; border-radius:var(--radius); box-shadow:var(--shadow)}
+
+    .badges{display:flex; gap:12px; flex-wrap:wrap}
+    .cta-row{display:flex; gap:12px; flex-wrap:wrap; margin-top:16px}
+
+    .art{position:relative; aspect-ratio:1/1; border-radius:20px; overflow:hidden; box-shadow:var(--shadow); border:1px solid rgba(148,163,184,.16)}
+    .glow{position:absolute; inset:-40%; background:conic-gradient(from 0deg, rgba(34,211,238,.1), transparent 30%, rgba(59,130,246,.12) 60%, transparent 90%); filter:blur(40px); animation:spin 20s linear infinite}
+    @keyframes spin{to{transform:rotate(1turn)}}
+
+    .logos{opacity:.9; display:grid; grid-template-columns:repeat(6,1fr); gap:18px; padding:20px; border:1px dashed rgba(148,163,184,.2); border-radius:16px}
+    .logos svg{width:100%; height:36px; opacity:.7}
+    @media (max-width:900px){ .hero-grid{grid-template-columns:1fr} .logos{grid-template-columns:repeat(3,1fr)} }
+
+    section{padding:64px 0}
+    .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
+    @media(max-width:900px){ .grid-3{grid-template-columns:1fr} }
+    .card{background:var(--bg-card); border:1px solid rgba(148,163,184,.16); border-radius:16px; padding:22px; box-shadow:var(--shadow-soft)}
+    .card h3{margin:8px 0 6px}
+    .card p{color:var(--muted)}
+
+    .section-title{font-size: clamp(22px, 3vw, 36px); line-height:1.15; margin:0 0 6px}
+    .section-sub{color:var(--muted); margin:0 0 24px}
+
+    .pricing{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
+    .price{border:1px solid rgba(148,163,184,.16); border-radius:18px; background:linear-gradient(0deg, rgba(59,130,246,.06), transparent 40%), var(--bg-card); padding:22px}
+    .price h4{margin:0}
+    .price .value{font-size:36px; font-weight:800; margin:8px 0}
+    .price ul{padding-left:18px; color:var(--muted);}
+    .price .btn{width:100%; justify-content:center}
+    .popular{outline: var(--ring)}
+    @media(max-width:900px){ .pricing{grid-template-columns:1fr} }
+
+    .faq details{border:1px solid rgba(148,163,184,.16); border-radius:14px; background:var(--bg-card); padding:14px 16px}
+    .faq details summary{cursor:pointer; font-weight:600}
+    .faq details p{color:var(--muted)}
+
+    .contact{display:grid; grid-template-columns:1.2fr .8fr; gap:20px}
+    @media(max-width:900px){ .contact{grid-template-columns:1fr} }
+    form{display:grid; gap:12px}
+    input, textarea, select{width:100%; padding:12px 14px; border-radius:12px; border:1px solid rgba(148,163,184,.25); background:transparent; color:var(--text)}
+    input:focus, textarea:focus, select:focus{outline:none; box-shadow:var(--ring); border-color:transparent}
+    label{font-size:14px; color:var(--muted)}
+    .hint{font-size:12px; color:var(--muted)}
+
+    footer{padding:28px 0; border-top:1px solid rgba(148,163,184,.16); color:var(--muted)}
+  </style>
 </head>
 <body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#topo" aria-label="Ir para o topo">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 3l8.66 5v8L12 21l-8.66-5V8L12 3z" stroke="url(#lg)" stroke-width="1.5"/><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#3b82f6"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs></svg>
+        <span>Produto X</span>
+      </a>
+      <nav class="menu" aria-label="Principal">
+        <a href="#produto">Produto</a>
+        <a href="#beneficios">Benefícios</a>
+        <a href="#prova">Prova</a>
+        <a href="#planos">Planos</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contato" class="btn" data-cta="menu">Começar</a>
+      </nav>
+      <button class="hamb" id="hamb" aria-label="Abrir menu" aria-expanded="false">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
+  </header>
 
-  <!-- Sidebar completa -->
-  <nav class="sidebar">
-    <h2>Lauro Mazzoni</h2> 
-    <ul>
-      <li><a href="#resumo">Resumo Profissional</a></li>
-      <li><a href="#formacao">Formação Acadêmica</a></li>
-      <li><a href="#certificacoes">Certificações</a></li>
-      <li><a href="#portfolio">Portfólio</a></li>
-      <li><a href="#experiencia">Experiência Profissional</a></li>
-      <li><a href="#projetos">Projetos</a></li>
-      <li><a href="#competencias">Competências Técnicas</a></li>
-      <li><a href="#cursos">Cursos</a></li>
-      <li><a href="#softskills">Soft Skills</a></li>
-      <li><a href="#idioma">Idioma</a></li>
-      <li><a href="#contato">Contato</a></li>
-    </ul>
-  </nav>
+  <main id="topo" class="hero">
+    <div class="container hero-grid">
+      <div class="hero-card">
+        <span class="pill">Lançamento</span>
+        <h1>Converta visitas em clientes com uma página simples e eficiente</h1>
+        <p>Apresente sua oferta com clareza, prove valor em segundos e guie o visitante a uma ação direta. Design responsivo, rápido e preparado para testes A/B.</p>
+        <div class="cta-row">
+          <a href="#contato" class="btn" data-cta="hero">Começar agora</a>
+          <a href="#produto" class="btn secondary">Ver como funciona</a>
+        </div>
+        <div class="logos" aria-label="Marcas atendidas">
+          <svg viewBox="0 0 100 24" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="24" rx="6" fill="rgba(148,163,184,.12)"/><text x="50" y="16" text-anchor="middle" fill="rgba(148,163,184,.7)" font-size="10" font-weight="700">LOGO 1</text></svg>
+          <svg viewBox="0 0 100 24" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="24" rx="6" fill="rgba(148,163,184,.12)"/><text x="50" y="16" text-anchor="middle" fill="rgba(148,163,184,.7)" font-size="10" font-weight="700">LOGO 2</text></svg>
+          <svg viewBox="0 0 100 24" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="24" rx="6" fill="rgba(148,163,184,.12)"/><text x="50" y="16" text-anchor="middle" fill="rgba(148,163,184,.7)" font-size="10" font-weight="700">LOGO 3</text></svg>
+          <svg viewBox="0 0 100 24" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="24" rx="6" fill="rgba(148,163,184,.12)"/><text x="50" y="16" text-anchor="middle" fill="rgba(148,163,184,.7)" font-size="10" font-weight="700">LOGO 4</text></svg>
+          <svg viewBox="0 0 100 24" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="24" rx="6" fill="rgba(148,163,184,.12)"/><text x="50" y="16" text-anchor="middle" fill="rgba(148,163,184,.7)" font-size="10" font-weight="700">LOGO 5</text></svg>
+          <svg viewBox="0 0 100 24" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="24" rx="6" fill="rgba(148,163,184,.12)"/><text x="50" y="16" text-anchor="middle" fill="rgba(148,163,184,.7)" font-size="10" font-weight="700">LOGO 6</text></svg>
+        </div>
+      </div>
+      <figure class="art" aria-label="Ilustração do produto">
+        <div class="glow" aria-hidden="true"></div>
+        <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" width="600" height="600" role="img" aria-label="Mockup">
+          <defs>
+            <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#3b82f6"/>
+              <stop offset="100%" stop-color="#8b5cf6"/>
+            </linearGradient>
+          </defs>
+          <rect x="40" y="40" width="520" height="320" rx="24" fill="#0b1220" stroke="url(#grad)" stroke-width="3"/>
+          <rect x="60" y="70" width="160" height="20" rx="6" fill="#1f2937"/>
+          <rect x="60" y="100" width="220" height="14" rx="6" fill="#1f2937"/>
+          <rect x="60" y="130" width="300" height="14" rx="6" fill="#1f2937"/>
+          <rect x="60" y="160" width="240" height="14" rx="6" fill="#1f2937"/>
+          <rect x="60" y="200" width="480" height="120" rx="12" fill="#111827" stroke="rgba(148,163,184,.18)"/>
+          <circle cx="240" cy="460" r="120" fill="url(#grad)" opacity=".15"/>
+          <rect x="180" y="420" width="280" height="48" rx="12" fill="#0b1220" stroke="#3b82f6"/>
+          <text x="320" y="452" text-anchor="middle" fill="#cbd5e1" font-size="16" font-weight="700">Botão de Ação</text>
+        </svg>
+      </figure>
+    </div>
+  </main>
 
-  <!-- Conteúdo -->
-  <div class="content">
-    <h1>Currículo</h1>
-    <h2>Lauro Mazzoni</h2> 
-    <hr />
-<h4><p class="head">Visitantes: <span id="visits"></span></p></h4>    
-    <p class="head" id="resumo">Resumo Profissional</p>
-    <ul>
-      <li>10+ anos em TI: Infraestrutura, operações, suporte e desenvolvimento</li>
-      <li>Experiência com Kubernetes, AWS, Terraform, Docker, Ansible e mais</li>
-      <li>IA aliada ao ecossistema DevOps para promover uma melhor produtividade técnica</li>
-    </ul>
+  <section id="produto">
+    <div class="container">
+      <h2 class="section-title">Como funciona</h2>
+      <p class="section-sub">Uma sequência clara que remove fricção e leva o visitante ao próximo passo.</p>
+      <div class="grid-3">
+        <div class="card">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
+          <h3>Headline objetiva</h3>
+          <p>Explique o ganho principal em uma frase. Evite jargões. Mostre a transformação.</p>
+        </div>
+        <div class="card">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8"/></svg>
+          <h3>Prova em segundos</h3>
+          <p>Depoimentos curtos, números claros e selos de confiança. Foque no essencial.</p>
+        </div>
+        <div class="card">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12h16M4 17h10M4 7h16"/></svg>
+          <h3>CTA sem atrito</h3>
+          <p>Peça uma única ação por vez. Botões visíveis, microcopy direto, sem distrações.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <p class="head" id="formacao">Formação Acadêmica</p>
-    <ul>
-      <li>Bacharel em Ciência da Computação – UNIPAC</li>
-    </ul>
+  <section id="beneficios">
+    <div class="container">
+      <h2 class="section-title">Benefícios</h2>
+      <p class="section-sub">Resultados práticos que importam para o negócio.</p>
+      <div class="grid-3">
+        <div class="card"><h3>Carrega rápido</h3><p>HTML limpo, imagens leves e cache eficiente para melhorar o SEO e a conversão.</p></div>
+        <div class="card"><h3>Responsivo</h3><p>Pronto para mobile, tablet e desktop. Nada de zoom manual ou layout quebrado.</p></div>
+        <div class="card"><h3>Pronto para testes</h3><p>Estrutura pensada para A/B: headline, herói, CTA e prova separados e fáceis de trocar.</p></div>
+      </div>
+    </div>
+  </section>
 
-    <p class="head" id="certificacoes">Certificações</p>
-    <ul>
-      <li>AWS Certified Cloud Practitioner:</li>
-      <div data-iframe-width="150" data-iframe-height="270"
-           data-share-badge-id="38103ec7-6727-47da-b8e2-6bf1bc4baeec"
-           data-share-badge-host="https://www.credly.com/badges/38103ec7-6727-47da-b8e2-6bf1bc4baeec/public_url"></div>
-      <li>AWS Certified Solutions Architect – Associate (Cursando)</li>
-    </ul>
+  <section id="prova">
+    <div class="container">
+      <h2 class="section-title">Prova social</h2>
+      <p class="section-sub">Histórias curtas e números objetivos funcionam melhor do que promessas vagas.</p>
+      <div class="grid-3">
+        <figure class="card">
+          <blockquote>Subimos a taxa de conversão em 38 por cento na primeira semana.</blockquote>
+          <figcaption class="hint">Ana, e-commerce</figcaption>
+        </figure>
+        <figure class="card">
+          <blockquote>Em 10 dias, 1.200 leads com custo por lead abaixo do esperado.</blockquote>
+          <figcaption class="hint">Rafael, educação</figcaption>
+        </figure>
+        <figure class="card">
+          <blockquote>O layout é simples de editar. Testamos 3 variações sem dor de cabeça.</blockquote>
+          <figcaption class="hint">Marta, SaaS</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
 
-    <p class="head" id="portfolio">Portfólio</p>
-    <ul>
-      <li>
-        <a href="https://medium.com/@lauromazzoni" class="medium" target="_blank">
-          medium.com/@lauromazzoni
-        </a>
-      </li>
-    </ul>
+  <section id="planos">
+    <div class="container">
+      <h2 class="section-title">Planos</h2>
+      <p class="section-sub">Escolha pelo estágio do seu projeto, não pelo medo de errar.</p>
+      <div class="pricing">
+        <div class="price card">
+          <h4>Start</h4>
+          <p class="value">R$ 0</p>
+          <ul>
+            <li>Template base</li>
+            <li>Seção de benefícios</li>
+            <li>FAQ e formulário</li>
+          </ul>
+          <button class="btn" data-cta="plano-start">Usar agora</button>
+        </div>
+        <div class="price card popular">
+          <h4>Pro</h4>
+          <p class="value">R$ 199</p>
+          <ul>
+            <li>Teste A/B integrado</li>
+            <li>Componentes extras</li>
+            <li>Otimização de SEO</li>
+          </ul>
+          <button class="btn" data-cta="plano-pro">Escolher Pro</button>
+        </div>
+        <div class="price card">
+          <h4>Empresa</h4>
+          <p class="value">Sob consulta</p>
+          <ul>
+            <li>Design customizado</li>
+            <li>Integrações</li>
+            <li>Suporte prioritário</li>
+          </ul>
+          <button class="btn" data-cta="plano-empresa">Falar com vendas</button>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <p class="head" id="experiencia">Experiência Profissional</p>
-	<ul>
-	  <li>
-	    <strong>Cadmus / C6 Bank (2025)</strong>:<br>
-	    Tratamento de alertas no ServiceNow; monitoramento via Grafana, Splunk e AppDynamics;  
-	    acionamento suporte aos times, SREs e vendors envolvidos; acompanhamento do incidentes via Microsoft Teams;  
-	    foco em reduzir recorrência dos alertas e auxiliar na resolução
-	  </li>
-	  <li>
-	    <strong>Conecta - provedor de serviços de internet</strong>:<br> 
-	    Suporte Help Desk para empresas e clientes residenciais; correção de configurações; liderança de visitas técnicas;  
-	    documentação de procedimentos; melhoria de processos do help desk
-	  </li>
-	  <li>
-	    <strong>Universidade Federal de São João del Rei (UFSJ) - Núcleo de Educação a Distância (NEAD) </strong>:<br>
-	    Administração do Moodle; suporte a docentes, tutores, alunos e polos; manutenção de infraestrutura;  
-	    servidores Linux e Windows Server 2008; palestras e treinamentos para 50+ colaboradores
-	  </li>
-	  <li>
-	    <strong>Farmácia de Manipulação Colonial</strong>:<br>
-	    Na matriz e filial era responsável pela administração de sistemas e rede; manutenção preventiva e corretiva; reestruturação da infraestrutura;  
-	    configuração de softwares; monitoramento de desempenho; backups regulares
-	  </li>
-	</ul>
+  <section id="faq" class="faq">
+    <div class="container">
+      <h2 class="section-title">Perguntas frequentes</h2>
+      <details>
+        <summary>Posso trocar as imagens com facilidade?</summary>
+        <p>Sim. As imagens principais são SVGs inline por desempenho. Você pode substituí-las por PNG, JPG ou SVG externos usando a tag img com loading="lazy".</p>
+      </details>
+      <br />
+      <details>
+        <summary>Como faço teste A/B neste layout?</summary>
+        <p>Há um seletor simples de variação no script. Duplique blocos de headline, CTA e herói, marque com data-variant e alterne via querystring, cookie ou flag.</p>
+      </details>
+      <br />
+      <details>
+        <summary>Funciona sem frameworks?</summary>
+        <p>Sim. É HTML, CSS e JS puros. Você pode portar para React, Next, Vue ou outro quando precisar.</p>
+      </details>
+    </div>
+  </section>
 
-    <p class="head" id="projetos">Projetos</p>
-    <ul>
-      <li>E-commerce automatizado na AWS (Magento, Terraform, Ansible, 2024)</li>
-      <li>Instâncias EC2 com Terraform e Ansible (2023)</li>
-      <li>Aplicação escalável com Beanstalk, CloudFront, DynamoDB (2023)</li>
-      <li>Migração de workload e IAM automatizado (2023)</li>
-    </ul>
-
-    <p class="head" id="competencias">Competências Técnicas</p>
-    <ul>
-      <li>
-        <p class="subtitle">Cloud / Infraestrutura</p>
+  <section id="contato">
+    <div class="container contact">
+      <div class="card">
+        <h2 class="section-title">Fale com a gente</h2>
+        <p class="section-sub">Vamos entender o objetivo e montar uma proposta direta, sem enrolação.</p>
+        <form id="lead-form" novalidate>
+          <div>
+            <label for="nome">Nome</label>
+            <input id="nome" name="nome" type="text" placeholder="Seu nome" required />
+          </div>
+          <div>
+            <label for="email">E-mail</label>
+            <input id="email" name="email" type="email" placeholder="voce@exemplo.com" required />
+          </div>
+          <div>
+            <label for="telefone">Telefone</label>
+            <input id="telefone" name="telefone" type="tel" inputmode="numeric" placeholder="(00) 00000-0000" />
+            <div class="hint">Opcional. Usamos apenas para retorno rápido.</div>
+          </div>
+          <div>
+            <label for="interesse">Interesse</label>
+            <select id="interesse" name="interesse">
+              <option>Geração de leads</option>
+              <option>Venda direta</option>
+              <option>Pré-lançamento</option>
+              <option>Evento</option>
+              <option>Recrutamento</option>
+            </select>
+          </div>
+          <div>
+            <label for="mensagem">Mensagem</label>
+            <textarea id="mensagem" name="mensagem" rows="4" placeholder="Conte rapidamente seu objetivo"></textarea>
+          </div>
+          <button class="btn" type="submit" data-cta="form">Enviar</button>
+          <div class="hint" id="form-status" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+      <aside class="card">
+        <h3>Atalhos úteis</h3>
         <ul>
-          <li>AWS, Terraform, Ansible, VMware, Linux</li>
+          <li>Arquivo Figma com componentes</li>
+          <li>Guia de copy rápida</li>
+          <li>Checklist de publicação</li>
         </ul>
-      </li>
-      <li>
-        <p class="subtitle">Monitoramento</p>
-        <ul>
-          <li>Grafana, Prometheus, Splunk, Zabbix, AppDynamics</li>
-        </ul>
-      </li>
-      <li>
-        <p class="subtitle">Containerização / Orquestração</p>
-        <ul>
-          <li>Docker, Kubernetes</li>
-        </ul>
-      </li>
-      <li>
-        <p class="subtitle">Desenvolvimento</p>
-        <ul>
-          <li>Node.js, PHP, Laravel, JavaScript, React.js, MySQL, MongoDB</li>
-        </ul>
-      </li>
-      <li>
-        <p class="subtitle">Automação</p>
-        <ul>
-          <li>CI/CD, GitHub Actions</li>
-        </ul>
-      </li>
-      <li>
-        <p class="subtitle">ITSM / Suporte</p>
-        <ul>
-          <li>ServiceNow, atendimento ao cliente, resolução de problemas</li>
-        </ul>
-      </li>
-    </ul>
+        <p class="hint">Substitua por links reais do seu projeto.</p>
+      </aside>
+    </div>
+  </section>
 
-    <p class="head" id="cursos">Cursos</p>
-    <ul>
-      <li>DevOps Pro, The Cloud Bootcamp</li>
-      <li>Node.js, Laravel, PHP</li>
-      <li>Cisco CCNA 1 a 4</li>
-    </ul>
+  <footer>
+    <div class="container">
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap">
+        <small>© <span id="ano"></span> Produto X. Todos os direitos reservados.</small>
+        <small><a href="#topo">Voltar ao topo</a></small>
+      </div>
+    </div>
+  </footer>
 
-    <p class="head" id="softskills">Soft Skills</p>
-    <ul>
-      <li>Comunicação, Proatividade, Trabalho em equipe</li>
-      <li>Resolução de problemas, Inovação, Adaptabilidade</li>
-    </ul>
+  <script>
+    const $ = s => document.querySelector(s);
+    const $$ = s => Array.from(document.querySelectorAll(s));
 
-    <p class="head" id="idioma">Idioma</p>
-    <ul>
-      <li>Inglês – Intermediário (compreensão auditiva avançada; comunicação oral funcional)</li>
-    </ul>
+    // Navegação mobile simples
+    const hamb = $('#hamb');
+    hamb.addEventListener('click', ()=>{
+      const nav = document.createElement('div');
+      nav.className = 'mobile-panel';
+      nav.style.position='fixed'; nav.style.inset='64px 16px 16px 16px';
+      nav.style.background='var(--bg-card)'; nav.style.border='1px solid rgba(148,163,184,.16)'; nav.style.borderRadius='16px'; nav.style.padding='12px'; nav.style.boxShadow='var(--shadow)';
+      nav.innerHTML = `
+        <a href="#produto" class="btn secondary" style="width:100%; justify-content:center; margin:6px 0">Produto</a>
+        <a href="#beneficios" class="btn secondary" style="width:100%; justify-content:center; margin:6px 0">Benefícios</a>
+        <a href="#prova" class="btn secondary" style="width:100%; justify-content:center; margin:6px 0">Prova</a>
+        <a href="#planos" class="btn secondary" style="width:100%; justify-content:center; margin:6px 0">Planos</a>
+        <a href="#faq" class="btn secondary" style="width:100%; justify-content:center; margin:6px 0">FAQ</a>
+        <a href="#contato" class="btn" data-cta="menu-mobile" style="width:100%; justify-content:center; margin:6px 0">Começar</a>
+      `;
+      const close = e => { document.body.removeChild(nav); document.removeEventListener('keydown', onEsc) };
+      const onEsc = e => { if(e.key==='Escape') close(); };
+      nav.addEventListener('click', e=>{ if(e.target.tagName==='A') close(); });
+      document.addEventListener('keydown', onEsc);
+      document.body.appendChild(nav);
+      hamb.setAttribute('aria-expanded','true');
+    });
 
-    <p class="head" id="contato">Contato</p>
-    <ul>
-      <li>Email: lauromazzoni@gmail.com</li>
-      <li>Celular: (32) 98837-4779</li>
-      <li>LinkedIn: <a href="https://www.linkedin.com/in/lauro-mazzoni/" target="_blank">lauro-mazzoni</a></li>
-      <li>Endereço: São João Del Rei - MG</li>
-    </ul>
-  </div>
+    // Scroll suave nos links locais
+    $$('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href');
+        const el = document.querySelector(id);
+        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); history.pushState(null,'',id); }
+      });
+    });
 
-  <script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
-  <script src="script.js"></script>
+    // Máscara leve de telefone
+    const tel = $('#telefone');
+    tel && tel.addEventListener('input', ()=>{
+      let v = tel.value.replace(/\D/g,'').slice(0,11);
+      if(v.length>6) tel.value = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`
+      else if(v.length>2) tel.value = `(${v.slice(0,2)}) ${v.slice(2)}`
+      else tel.value = v;
+    });
+
+    // Validação simples de formulário
+    const form = $('#lead-form');
+    form.addEventListener('submit', e=>{
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(form));
+      const status = $('#form-status');
+      if(!data.nome || !data.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)){
+        status.textContent = 'Confira nome e e-mail.'; status.style.color = '#f87171'; return;
+      }
+      status.textContent = 'Enviado com sucesso. Vamos retornar em breve.'; status.style.color = '#34d399';
+      // Aqui você faria um fetch para seu backend/PSP/integração
+      console.log('Lead enviado', data);
+      form.reset();
+    });
+
+    // Coleta mínima de eventos de CTA
+    $$('[data-cta]').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const label = btn.getAttribute('data-cta');
+        console.log('CTA', label, { ts: Date.now() });
+      });
+    });
+
+    // Alternador de variação para teste A/B simples via querystring ?v=2
+    const params = new URLSearchParams(location.search);
+    const v = params.get('v');
+    if(v==='2'){
+      const h1 = document.querySelector('.hero h1');
+      h1 && (h1.textContent = 'Explique o valor em 5 segundos e peça uma única ação');
+      const p = document.querySelector('.hero p');
+      p && (p.textContent = 'Corte ruídos, foque no resultado e facilite o clique. Este layout é direto, leve e auditável.');
+    }
+
+    // Ano no rodapé
+    $('#ano').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
-
